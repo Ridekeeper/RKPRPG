@@ -1,2 +1,4 @@
 RKPRPG
 ======
+
+Ridekeeper PhoneGap application

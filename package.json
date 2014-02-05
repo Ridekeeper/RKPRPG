@@ -9,6 +9,6 @@
     "phantom-jasmine": ">=0.2.9"
   },
   "scripts": {
-    "test": "phantom-jasmine ./www/spec.html"
+    "test": "phantomjs www/spec/lib/run_jasmine_test.coffee www/spec.html "
   }
 }

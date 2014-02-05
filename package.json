@@ -1,0 +1,14 @@
+{
+  "name": "ridekeeper",
+  "version": "0.0.1",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Ridekeeper/RKPRPG.git"
+  },
+  "dependencies": {
+    "phantom-jasmine": ">=0.2.9"
+  },
+  "scripts": {
+    "test": "phantom-jasmine ./www/spec.html"
+  }
+}

@@ -1,8 +1,25 @@
 /* app css stylesheet */
 
-snap-content {
+body {
+  background-color: #333;
+  color: #FFF;
+}
+
+.snap-content {
   background-color: #111;
   color: #FFF;
   border-left: 1px solid #000;
   border-right: 1px solid #000;
+}
+
+.snap-drawer {
+  color: #FFF;
+}
+
+.drawer-button {
+  border: 1px solid #333;
+  border-right:none;
+  background-color: #111;
+  margin: 0px;
+  padding: 10px;
 }

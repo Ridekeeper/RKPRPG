@@ -17,7 +17,7 @@ angular.module('myApp.controllers', [])
   .controller('ExOptionsCtrl', function($scope) {
     'use strict';
     $scope.snapOpts = {
-      disable: 'none'
+      disable: 'right'
     };
 
     $scope.disable = function(side) {

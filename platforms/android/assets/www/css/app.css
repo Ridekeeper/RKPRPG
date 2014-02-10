@@ -1,0 +1,8 @@
+/* app css stylesheet */
+
+snap-content {
+  background-color: #111;
+  color: #FFF;
+  border-left: 1px solid #000;
+  border-right: 1px solid #000;
+}

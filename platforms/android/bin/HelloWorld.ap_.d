@@ -83,13 +83,7 @@
 /home/matthew/projects/ridekeeper/platforms/android/assets/www/lib/snapjs/demo/assets/drag.png \
 /home/matthew/projects/ridekeeper/platforms/android/assets/www/lib/snapjs/demo/assets/graph.png \
 /home/matthew/projects/ridekeeper/platforms/android/assets/www/lib/snapjs/demo/assets/open.png \
-/home/matthew/projects/ridekeeper/platforms/android/assets/www/partials/ex-basic.html \
-/home/matthew/projects/ridekeeper/platforms/android/assets/www/partials/ex-dragger.html \
 /home/matthew/projects/ridekeeper/platforms/android/assets/www/partials/ex-options.html \
-/home/matthew/projects/ridekeeper/platforms/android/assets/www/partials/ex-remote.html \
-/home/matthew/projects/ridekeeper/platforms/android/assets/www/partials/ex-two-drawers.html \
-/home/matthew/projects/ridekeeper/platforms/android/assets/www/partials/ex-two-snappers.html \
-/home/matthew/projects/ridekeeper/platforms/android/assets/www/partials/index.html \
 /home/matthew/projects/ridekeeper/platforms/android/assets/www/res/icon \
 /home/matthew/projects/ridekeeper/platforms/android/assets/www/res/screen \
 /home/matthew/projects/ridekeeper/platforms/android/assets/www/res/icon/android \

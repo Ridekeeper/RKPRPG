@@ -26,9 +26,8 @@
         <link rel="stylesheet" type="text/css" href="spec/lib/jasmine-1.2.0/jasmine.css">
         <script type="text/javascript" src="spec/lib/jasmine-1.2.0/jasmine.js"></script>
         <script type="text/javascript" src="spec/lib/jasmine-1.2.0/jasmine-html.js"></script>
-        <script type="text/javascript" src="spec/lib/console-runner.js"></script>
-        
-	<!-- include source files here... -->
+
+        <!-- include source files here... -->
         <script type="text/javascript" src="js/index.js"></script>
 
         <!-- include spec files here... -->
@@ -61,11 +60,6 @@
                     jasmineEnv.execute();
                 }
             })();
-
-		var console_reporter = new jasmine.ConsoleReporter();
-		jasmine.getEnv().addReporter(console_reporter);
-		jasmine.getEnv().execute();
-
         </script>
     </head>
     <body>

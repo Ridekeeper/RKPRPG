@@ -46,10 +46,11 @@ body {
 }
 
 #snap-button {
+  border-radius:10px;
   width:45px;
   margin:5px;
   height:45px;;
-  margin-right:20px;
+  margin-right:10px;
   background-color: #007DA9;
   float:left;
 }

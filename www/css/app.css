@@ -1,13 +1,13 @@
 /* app css stylesheet */
 
 body {
-  background-color: #333;
+  background-color: #101010;
   color: #FFF;
 }
 
 .snap-content {
-  background-color: #111;
-  color: #FFF;
+  background-color: #EDEDED;
+  color: #000;
   border-left: 1px solid #000;
   border-right: 1px solid #000;
 }
@@ -19,7 +19,37 @@ body {
 .drawer-button {
   border: 1px solid #333;
   border-right:none;
-  background-color: #111;
+  background-color: #007DA9;
   margin: 0px;
+  font-weight: bold;
   padding: 10px;
+  padding-left:20px;
+}
+
+#top-bar {
+  position:absolute;
+  color: #fff;
+  top:0px;
+  left:0px;
+  width:100%;
+  background-color: #222222;
+}
+
+#top-bar h1 {
+  margin: 10px;
+}
+
+#main-view {
+  position:absolute;
+  top:50px;
+  margin-left:10px;
+}
+
+#snap-button {
+  width:45px;
+  margin:5px;
+  height:45px;;
+  margin-right:20px;
+  background-color: #007DA9;
+  float:left;
 }

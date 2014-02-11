@@ -1,11 +1,23 @@
 
-angular.module('myApp', ['ngRoute', 'demo', 'snap', 'myApp.controllers']).
+angular.module('myApp', ['ngRoute', 'ridekeeper', 'snap', 'ridekeeper.controllers']).
   config(['$routeProvider', function($routeProvider) {
     'use strict';
     $routeProvider
-      .when('/ex-options', {
-        templateUrl: 'partials/ex-options.html',
-        controller: 'ExOptionsCtrl'
+      .when('/vehicles-stolen', {
+        templateUrl: 'partials/vehicles-stolen.html',
+        controller: 'MenuCtrl'
       })
-      .otherwise({redirectTo: '/ex-options'});
+      .when('/profile', {
+        templateUrl: 'partials/profile.html',
+        controller: 'MenuCtrl'
+      })
+      .when('/vehicles', {
+        templateUrl: 'partials/vehicles.html',
+        controller: 'MenuCtrl'
+      }) 
+      .when('/settings', {
+        templateUrl: 'partials/settings.html',
+        controller: 'MenuCtrl'
+      })
+      .otherwise({redirectTo: '/vehicles-stolen'});
   }]);

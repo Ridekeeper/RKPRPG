@@ -17,13 +17,34 @@ body {
 }
 
 .drawer-button {
-  border: 1px solid #333;
+  display:block;
+  text-decoration:none;
+  color: #FFF;
   border-right:none;
-  background-color: #007DA9;
   margin: 0px;
   font-weight: bold;
   padding: 10px;
   padding-left:20px;
+}
+
+a:link {
+  color: #FFF;
+}
+
+a:active {
+  color: #FFF;
+}
+
+a:visited {
+  color: #FFF;
+}
+
+a:hover {
+  color: #FFF;
+}
+
+.active-button {
+  background-color: #007DA9;
 }
 
 #top-bar {

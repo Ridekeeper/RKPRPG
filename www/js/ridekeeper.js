@@ -1,6 +1,6 @@
-angular.module('demo', []);
+angular.module('ridekeeper', []);
 
-angular.module('demo').factory('logger', function() {
+angular.module('ridekeeper').factory('logger', function() {
   'use strict';
   var exports = {};
 

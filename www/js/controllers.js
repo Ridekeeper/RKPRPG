@@ -1,20 +1,7 @@
 
-angular.module('myApp.controllers', [])
+angular.module('ridekeeper.controllers', [])
 
-  .controller('ExRemoteCtrl', function($scope, snapRemote, logger) {
-    'use strict';
-    snapRemote.getSnapper().then(function(snapper) {
-      snapper.on('open', function() {
-        logger.info('Opened!');
-      });
-
-      snapper.on('close', function() {
-        logger.info('Closed!');
-      });
-    });
-  })
-
-  .controller('ExOptionsCtrl', function($scope) {
+  .controller('MenuCtrl', function($scope) {
     'use strict';
     $scope.snapOpts = {
       disable: 'right',

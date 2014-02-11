@@ -2,10 +2,10 @@
 <widget id="com.ucla.Ridekeeper" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
     <name>Ridekeeper</name>
     <description>
-        Hello World sample application that responds to the deviceready event.
+        Ridekeeper community motorcycle theft prevention mobile application.
     </description>
-    <author email="support@phonegap.com" href="http://phonegap.com">
-        PhoneGap Team
+    <author email="matth122@ucla.edu" href="https://github.com/Ridekeeper/RKPRPG">
+        Ridekeeper Team
     </author>
     <feature name="http://api.phonegap.com/1.0/device" />
     <preference name="permissions" value="none" />

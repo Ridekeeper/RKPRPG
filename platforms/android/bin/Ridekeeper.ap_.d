@@ -1,4 +1,4 @@
-/home/matthew/projects/ridekeeper/platforms/android/bin/HelloWorld.ap_ \
+/home/matthew/projects/ridekeeper/platforms/android/bin/Ridekeeper.ap_ \
  : /home/matthew/projects/ridekeeper/platforms/android/res/drawable/icon.png \
 /home/matthew/projects/ridekeeper/platforms/android/res/drawable-hdpi/icon.png \
 /home/matthew/projects/ridekeeper/platforms/android/res/drawable-ldpi/icon.png \

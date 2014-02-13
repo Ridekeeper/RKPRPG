@@ -3,6 +3,7 @@
 body {
   background-color: #222;
   color: #FFF;
+  font-weight:bold;
 }
 
 .snap-content {
@@ -67,6 +68,13 @@ body {
   width:100%;
 }
 
+.header {
+ border-bottom: 2px solid #111;
+ line-height:40px;
+ margin-left:10px;
+ margin-right:10px;
+}
+
 .indented {
  margin-left:10px;
 }
@@ -96,6 +104,16 @@ body {
  border-bottom: 1px solid  #999;
 }
 
+.list-item-borderless {
+ display:block;
+ line-height:45px;
+ padding-left:10px;
+ margin-left:auto;
+ margin-right:auto;
+ text-decoration:none;
+ height:45px;
+}
+
 .list-item:link {
   color: #000;
 }
@@ -111,6 +129,23 @@ body {
 .list-item:hover {
   color: #000;
 }
+
+.list-item-borderless:link {
+  color: #000;
+}
+
+.list-item-borderless:active {
+  color: #000;
+}
+
+.list-item-borderless:visited {
+  color: #000;
+}
+
+.list-item-borderless:hover {
+  color: #000;
+}
+
 
 .ui-button {
  background-color: #007DA9;

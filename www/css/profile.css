@@ -1,0 +1,12 @@
+.profile-photo {
+  text-align:center;
+  padding:5px;
+  margin:0px;
+  background-color:#121212;
+  color: white;
+}
+
+.profile-photo img {
+ padding:10px;
+ border-radius:10px;
+}

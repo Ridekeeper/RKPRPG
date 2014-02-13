@@ -1,7 +1,7 @@
 <snap-drawers data-snap-ignore="true">
-  <div snap-drawer>
+  <div snap-drawer data-role="none">
      <div>
-      <a href="#/vehicles-stolen" class="drawer-button active-button">Vehicles Being Stolen</a>
+      <a data-role="none" href="#/vehicles-stolen" class="drawer-button active-button">Vehicles Being Stolen</a>
      </div>
     <div>
       <a href="#/profile" class="drawer-button">My Profile</a> 
@@ -17,13 +17,16 @@
 
 <snap-content snap-options="snapOpts">
  <div id="top-bar">
-  <div snap-toggle id="snap-button">
-  </div>
-<h1>Ridekeeper</h21>
+  <img src="./icon.png" snap-toggle id="snap-button">
+  <h1>Ridekeeper</h1>
  </div>
 
- <div id="main-view">
- <p>Vehicles Stolen<p>
-</div>
+  <div id="main-view">
+  <div class="list-view">
+  <a href="#/vehicle-map" class="list-item">Kawasaki Ninja 250</a></li>
+  <a href="#/vehicle-map" class="list-item">Toyota Corolla</a></li>
+  </div>
+  </div>
+
 </snap-content>
 

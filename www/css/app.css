@@ -49,7 +49,6 @@ body {
 
 #top-bar {
   position:absolute;
-  box-shadow: 1px 1px 3px 1px #111;
   color: #fff;
   top:0px;
   left:0px;
@@ -62,6 +61,7 @@ body {
 }
 
 #main-view {
+  background-color: #EDEDED;
   position:absolute;
   top:55px;
   width:100%;
@@ -73,10 +73,8 @@ body {
 
 #snap-button {
   border-radius:10px;
-  width:45px;
   margin:5px;
   height:45px;
-  margin-right:10px;
   background-color: #007DA9;
   float:left;
 }
@@ -116,7 +114,6 @@ body {
 .ui-button {
  background-color: #007DA9;
  border-radius:10px; 
- width:20%;
  padding:10px;
  color:white;
  text-align:center;

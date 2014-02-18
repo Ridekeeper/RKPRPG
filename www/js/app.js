@@ -3,6 +3,10 @@ angular.module('myApp', ['ngRoute', 'ridekeeper', 'snap', 'ridekeeper.controller
   config(['$routeProvider', function($routeProvider) {
     'use strict';
     $routeProvider
+      .when('/nav', {
+        templateUrl: 'partials/nav.html',
+        controller: 'MenuCtrl'
+      })
       .when('/vehicles-stolen', {
         templateUrl: 'partials/vehicles-stolen.html',
         controller: 'MenuCtrl'
@@ -23,5 +27,5 @@ angular.module('myApp', ['ngRoute', 'ridekeeper', 'snap', 'ridekeeper.controller
         templateUrl: 'partials/vehicle-map.html',
         controller: 'MenuCtrl'
       })
-      .otherwise({redirectTo: '/vehicles-stolen'});
+      .otherwise({redirectTo: '/nav'});
   }]);

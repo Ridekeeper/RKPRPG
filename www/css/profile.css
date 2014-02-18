@@ -1,0 +1,16 @@
+.profile-photo {
+  text-align:center;
+  padding:5px;
+  margin:0px;
+}
+
+.profile-photo img {
+ padding:10px;
+ border-radius:10px;
+}
+
+.profile-settings {
+ margin:0px;
+ padding:5px;
+ background-color: #EDEDED;
+}

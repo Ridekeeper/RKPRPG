@@ -1,8 +1,9 @@
 /* app css stylesheet */
 
 body {
-  background-color: #101010;
+  background-color: #222;
   color: #FFF;
+  font-weight:bold;
 }
 
 .snap-content {
@@ -27,19 +28,19 @@ body {
   padding-left:20px;
 }
 
-a:link {
+.snapdrawer a:link {
   color: #FFF;
 }
 
-a:active {
+.snapdrawer a:active {
   color: #FFF;
 }
 
-a:visited {
+.snapdrawer a:visited {
   color: #FFF;
 }
 
-a:hover {
+.snapdrawer a:hover {
   color: #FFF;
 }
 
@@ -61,17 +62,100 @@ a:hover {
 }
 
 #main-view {
+  background-color: #EDEDED;
   position:absolute;
-  top:50px;
-  margin-left:10px;
+  top:55px;
+  width:100%;
+}
+
+.header {
+ border-bottom: 2px solid #111;
+ line-height:40px;
+ margin-left:10px;
+ margin-right:10px;
+}
+
+.indented {
+ margin-left:10px;
 }
 
 #snap-button {
   border-radius:10px;
-  width:45px;
   margin:5px;
-  height:45px;;
-  margin-right:10px;
+  height:45px;
   background-color: #007DA9;
   float:left;
+}
+
+.list-view {
+ margin-left:auto;
+ margin-right:auto;
+ height:100%;
+}
+
+.list-item {
+ display:block;
+ line-height:45px;
+ padding-left:10px;
+ margin-left:auto;
+ margin-right:auto;
+ text-decoration:none;
+ height:45px;
+ border-bottom: 1px solid  #999;
+}
+
+.list-item-borderless {
+ display:block;
+ line-height:45px;
+ padding-left:10px;
+ margin-left:auto;
+ margin-right:auto;
+ text-decoration:none;
+ height:45px;
+}
+
+.list-item:link {
+  color: #000;
+}
+
+.list-item:active {
+  color: #000;
+}
+
+.list-item:visited {
+  color: #000;
+}
+
+.list-item:hover {
+  color: #000;
+}
+
+.list-item-borderless:link {
+  color: #000;
+}
+
+.list-item-borderless:active {
+  color: #000;
+}
+
+.list-item-borderless:visited {
+  color: #000;
+}
+
+.list-item-borderless:hover {
+  color: #000;
+}
+
+
+.ui-button {
+ background-color: #007DA9;
+ border-radius:10px; 
+ padding:10px;
+ color:white;
+ text-align:center;
+}
+
+.centered {
+ margin-left:auto;
+ margin-right:auto;
 }

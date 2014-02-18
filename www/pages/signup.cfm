@@ -16,8 +16,13 @@
 				
 					<div class="input-group">
 						<div class="input-row">
+							<label>Username</label>
+							<input type="text" id="sign_username" placeholder="Username">
+						</div>
+
+						<div class="input-row">
 							<label>Email</label>
-							<input type="text" id="sign_username" placeholder="Email">
+							<input type="text" id="sign_email" placeholder="Email">
 						</div>
 						<div class="input-row">
 							<label>Password</label>
@@ -25,7 +30,7 @@
 						</div>
 					</div>
 					
-					<a class="button-positive button-block notlink" href="javascript:void(0)" id="sign_submit">Sign Up</a>			
+					<a class="button-positive button-block notlink" onclick="userCreate(); return false;" href="javascript:void(0)" id="sign_submit">Sign Up</a>			
 					<a href="##signin" class="button">Need to login?</a>
 					
 				</div>

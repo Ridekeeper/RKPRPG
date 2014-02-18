@@ -1,13 +1,18 @@
 (function(GLOBAL, $, tmpl) {
 	
 	//dom cache
-	var item_list, new_item, new_itemCode, parse_log;
+	var item_list, new_item, new_itemCode, parse_log,quickblox;
 
 	function _initParse()
 	{
 		$.parse.init();
 		
 		return true;
+	}
+
+	function _initQuickBlox(){
+		alert('in initQucikBlox()');
+		quickblox = new QuickBlox();
 	}
 
 	function init()
@@ -20,6 +25,7 @@
 		GLOBAL.userid = "";
 		
 		_initParse();
+		_initQuickBlox();
 		_loadSignupForm();	
 
 		GLOBAL.uploadTestFile = "";
@@ -77,6 +83,10 @@
 	});	
 
 })(window, jQuery, tmpl);
+
+function doAlert(e,title){
+	alert(e, function() {}, title);	
+}
 
 function doFail(e) 
 {

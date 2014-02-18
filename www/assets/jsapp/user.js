@@ -31,6 +31,12 @@ function _resetPassword()
 	);
 }
 
+function isValidEmail(email)
+{
+    return /^[a-z0-9]+([-._][a-z0-9]+)*@([a-z0-9]+(-[a-z0-9]+)*\.)+[a-z]{2,4}$/.test(email)
+        && /^(?=.{1,64}@.{4,64}$)(?=.{6,100}$).*/.test(email);
+}
+
 function _login(email,pass) 
 {
 	$.parse.login(
@@ -51,20 +57,49 @@ function _login(email,pass)
 	);
 }
 
+
 function _signup() 
 {
 	GLOBAL.noACL = 1;
-	var email = $("#sign_username").val();
+	var username = $("#sign_username").val();
+	var email = $("#sign_email").val();
 	var pass = $("#sign_password").val();
 	
+	//Trim white space
+	username = $.trim(username);
+	email = $.trim(email);
+	pass  = $.trim(pass);
+
+	//Validate the lengths
+	if(username.length < 1 || username.length > 15){
+		doAlert("Username must be alphanumeric and between 5-15 characters","Error");
+		return;
+	}
+
+	if(!isValidEmail(email)){
+		doAlert("Please enter a valid email","Error");
+		return;
+	}
+
+	if(pass.length < 5 || pass.length > 15){
+		doAlert("Password must be between 5-15 characters","Error");
+		return;
+	}
+
+	return;
+
+
 	$.parse.signup({ 
-			username : email, 
+			username : username, 
 			password : pass, 
 			email : email
 		},
 		function(e) // Success
 		{
-			console.log("success:",e);	
+			console.log("success:",e);
+			//Register QuickBlox
+			alert('success here');
+			
 			_logininit(e.sessionToken,e.objectId);	
 			
 			amplify.store("logininfo",{ email: email, password: pass});	 

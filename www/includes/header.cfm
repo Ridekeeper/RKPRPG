@@ -22,15 +22,23 @@
 	<script src="assets/jsapp/mobilestart.js"></script>  
 	
 	<script src="assets/jsvendor/jquery-2.0.0.min.js"></script>  
+	<script src="assets/jsvendor/jquery.base64.min.js"></script>
+	<script src="assets/jsvendor/jquery.formatDateTime.js"></script>
 	<script src="assets/jsvendor/jquery.elastic.source.js"></script>  
 	<script src="assets/jsvendor/amplify.min.js"></script>
 	<script src="assets/jsvendor/iscroll4.js" type="text/javascript"></script>
 	<script src="assets/jsvendor/history/scripts/bundled/html4html5/jquery.history.js"></script>	 
 	<script src="assets/jsvendor/tmpl.js"></script>
 	<script src="assets/jsvendor/jquery.parse.js"></script>
+	<script src="assets/jsvendor/jquery.quickblox.js"></script>
+	<script src="assets/jsvendor/strophe.js"></script>  
+	<script src="assets/jsvendor/strophe.muc.js"></script>  
+	<script src="assets/jsvendor/parseUri.js"></script>   
+	<script src="assets/jsvendor/xmppchat.js"></script>  
+
+
 	<script src="assets/jsvendor/jgestures.min.js"></script>
 	<script src="assets/jsvendor/strftime-min.js"></script>
-	
 	<script src="assets/jsapp/mobile.js"></script>  
 	
 	

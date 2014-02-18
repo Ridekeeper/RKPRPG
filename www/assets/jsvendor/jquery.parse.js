@@ -2,8 +2,8 @@
 
     var ns, _opts, methods, uriRgx;
 
-    ParseApplicationId = "1VmGxk4dx6IivA63Y4AHsijZaWuPNYj9Enc7yueU";
-    ParseRESTAPIKey = "354yoKWbvR9JmHdDPYcQigTZja2bJekcm4RNg8Ck";
+    ParseApplicationId = "TfBH3NJxzbOaxpksu5YymD4lP9bPlytcfZMG8i5a";
+    ParseRESTAPIKey = "obFmxyzaxx6JWMVMtXpaggDFu2TcARRMqyFQdYpP";
 
     //Plugin namespace you can change this if you want..
     //i.e, ns = "db" = $.db.get/post/put/delete

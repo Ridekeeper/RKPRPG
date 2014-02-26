@@ -1,26 +1,12 @@
-function hideOverlay()
-{
-  $(".overlay").hide(); 
-}
-
-function showOverlay()
-{
-  $(".overlay").show();
-}
 
 function showMessage(msg)
 {
-  var $overlayBox = $(".overlay .overlay-box");
-  
-  $overlayBox.html(msg);
-  $overlayBox.show();
-  showOverlay();
-}
-
-function hideMessage()
-{
-  $(".overlay .overlay-box").hide();
-  hideOverlay();
+  navigator.notification.alert(
+   msg,
+   function(){},
+   'Message',
+   'Done' 
+  )
 }
 
 function hideLoader()

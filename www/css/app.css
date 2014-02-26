@@ -51,6 +51,11 @@ body {
  vertical-align:middle;
 }
 
+.overlay-loader {
+ line-height:200px;
+ vertical-align:middle;
+}
+
 .snapdrawer a:link {
   color: #FFF;
 }

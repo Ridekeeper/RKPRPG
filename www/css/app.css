@@ -28,6 +28,28 @@ body {
   padding-left:20px;
 }
 
+.overlay {
+  position:fixed;
+  display:none;
+  width:40%;
+  height:200px;;
+  margin-left:30%;
+  margin-right:auto;
+  top:45%;
+  bottom:45%;
+  background-color:#111;
+  z-index:1; 
+  color: #007DA9;
+  text-align:center;
+  border-radius: 10px;
+}
+
+.overlay-box {
+ height:200px;
+ line-height:200px;
+ vertical-align:middle;
+}
+
 .snapdrawer a:link {
   color: #FFF;
 }

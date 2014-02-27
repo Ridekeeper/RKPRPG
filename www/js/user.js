@@ -1,4 +1,3 @@
-
 function user() {
 
   this.initParseSession = function (sessionToken)
@@ -21,7 +20,7 @@ function user() {
       
         setTimeout(function() 
         { 
-          showMessage("<h2>Success!</h2>Instructions for resetting your password have been sent to your email address successfully! Don't forget to check your spam.<br><br><a href='#' class='button-positive' onclick='hideMessage();return false;'>Okay</a>");
+          showMessage("Success! Instructions for resetting your password have been sent to your email address successfully! Don't forget to check your spam.");
           
         }, 1);
       

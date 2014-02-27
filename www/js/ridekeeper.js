@@ -1,18 +1,12 @@
 angular.module('ridekeeper', []);
 
-angular.module('ridekeeper').factory('logger', function() {
-  'use strict';
-  var exports = {};
+function ridekeeper() {
 
-  var getConsole = function() {
-    return document.getElementById('console');
-  };
+  this.user = new user();
 
-  exports.info = function(msg) {
-    var p = document.createElement('p');
-    p.innerHTML = msg;
-    getConsole().appendChild(p);
-  };
+  this.parse = new parse();
 
-  return exports;
-});
+}
+
+var Ridekeeper = new ridekeeper();
+

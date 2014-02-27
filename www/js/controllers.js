@@ -16,6 +16,21 @@ angular.module('ridekeeper.controllers', [])
       $scope.snapOpts.disable = 'none';
     };
   })
+  .controller('MapCtrl', function($scope) {
+    'use strict';
+    $scope.snapOpts = {
+      disable: 'right',
+      hyperextensible: false
+    };
+
+    $scope.disable = function(side) {
+      $scope.snapOpts.disable = side;
+    };
+
+    $scope.enable = function() {
+      $scope.snapOpts.disable = 'none';
+    };
+  })
 
   // That's all folks
   ;

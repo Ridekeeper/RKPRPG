@@ -37,6 +37,35 @@ function Vehicle()
         alert('addVehicle failed');
       }
     });
+  }
+
+  
+  this.removeVehicle = function (objectId)
+  {
+  	var Vehicle = Parse.Object.extend("Vehicle");
+	var query = new Parse.Query(Vehicle);
+	query.get(objectId, {
+	  success: function(object) {
+      // object is an instance of Parse.Object.
+        object.destroy({
+          success: function(object) {
+          // The object was deleted from the Parse Cloud.
+            //alert(object.get("make") + "," + object.get("model") + "was removed.");
+
+          },
+          error: function(object, error) {
+    	  // The delete failed.
+    	  // error is a Parse.Error with an error code and description.
+    	    alert('Error: object.destroy in removeVehicle failed');
+  		  }
+		});
+  	  },
+
+  	  error: function(object, error) {
+      // error is an instance of Parse.Error.
+        alert('Error: Query.get in removeVehicle failed');
+  	  }
+	});  	
 
   };
 

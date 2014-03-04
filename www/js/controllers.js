@@ -18,6 +18,7 @@ function menuControl($scope) {
     clearInterval(intervalId);
     intervalId = null;
   }
+
 }
 
 angular.module('ridekeeper.controllers', [])
@@ -37,10 +38,18 @@ angular.module('ridekeeper.controllers', [])
      menuControl($scope);
      stolenInitialize();
   })
+  .controller('VehiclesCtrl', function($scope) {
+     menuControl($scope);
+     vehiclesInitialize();
+  })
   .controller('LoginCtrl', function($scope) {
      menuControl($scope);
      Ridekeeper.login.initialize();
      snapper.disable();
+  })
+  .controller('RegistrationCtrl', function($scope) {
+     menuControl($scope);
+     registrationInitialize();
   })
 
   // That's all folks

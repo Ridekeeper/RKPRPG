@@ -13,7 +13,7 @@ angular.module('myApp', ['ngRoute', 'ridekeeper', 'snap', 'ridekeeper.controller
       })
       .when('/vehicles', {
         templateUrl: 'partials/vehicles.html',
-        controller: 'MenuCtrl'
+        controller: 'VehiclesCtrl'
       }) 
       .when('/settings', {
         templateUrl: 'partials/settings.html',
@@ -26,6 +26,10 @@ angular.module('myApp', ['ngRoute', 'ridekeeper', 'snap', 'ridekeeper.controller
        .when('/login', {
         templateUrl: 'partials/login.html',
         controller: 'LoginCtrl'
+      })
+       .when('/registration', {
+        templateUrl: 'partials/registration.html',
+        controller: 'RegistrationCtrl'
       })
       .otherwise({redirectTo: '/login'});
   }]);

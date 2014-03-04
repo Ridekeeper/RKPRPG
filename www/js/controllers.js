@@ -53,6 +53,9 @@ angular.module('ridekeeper.controllers', [])
      menuControl($scope);
      mapInitialize();
   })
-
+  .controller('VehiclesCtrl', function($scope) {
+     menuControl($scope);
+     vehiclesInitialize();
+  })
   // That's all folks
   ;

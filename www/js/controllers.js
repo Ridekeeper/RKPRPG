@@ -49,7 +49,7 @@ angular.module('ridekeeper.controllers', [])
   })
   .controller('RegistrationCtrl', function($scope) {
      menuControl($scope);
-     registrationInitialize();
+     Ridekeeper.registration.initialize();
      snapper.disable();
   })
 

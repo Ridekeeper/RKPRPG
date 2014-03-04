@@ -21,7 +21,7 @@ angular.module('myApp', ['ngRoute', 'ridekeeper', 'snap', 'ridekeeper.controller
       })
        .when('/vehicle-map', {
         templateUrl: 'partials/vehicle-map.html',
-        controller: 'MenuCtrl'
+        controller: 'MapCtrl'
       })
       .otherwise({redirectTo: '/vehicles-stolen'});
   }]);

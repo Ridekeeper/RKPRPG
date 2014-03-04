@@ -1,20 +1,3 @@
-<snap-drawers data-snap-ignore="true">
-  <div snap-drawer>
-     <div>
-      <a href="#/vehicles-stolen" class="drawer-button">Vehicles Being Stolen</a>
-     </div>
-    <div>
-      <a href="#/profile" class="drawer-button">My Profile</a> 
-    </div>
-    <div>
-      <a href="#/vehicles" class="drawer-button active-button">My Vehicles</a> 
-    </div>
-    <div>
-      <a href="#/settings" class="drawer-button">Settings</a> 
-    </div>
-  </div>
-</snap-drawers>
-
 <snap-content snap-options="snapOpts">
  <div class="overlay">
   <div class="overlay-box">
@@ -27,8 +10,7 @@
  </div>
 
  <div id="main-view">
-   <div class="list-view">
-   <div class="list-item" onclick="setVehiclePage(1)">Kawasaki Ninja 250</div>
+   <div class="list-view" id="vehicle-list">
    </div>
  </div>
 </snap-content>

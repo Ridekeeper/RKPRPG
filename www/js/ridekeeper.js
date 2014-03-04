@@ -6,6 +6,8 @@ function ridekeeper() {
 
   this.parse = new parse();
 
+  this.highlightedPage = "vehicles-stolen";
+
 }
 
 var Ridekeeper = new ridekeeper();

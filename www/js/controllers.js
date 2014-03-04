@@ -61,9 +61,17 @@ angular.module('ridekeeper.controllers', [])
      menuControl($scope);
      stolenInitialize();
   })
+<<<<<<< HEAD
   .controller('VehiclesCtrl', function($scope) {
      menuControl($scope);
      vehiclesInitialize();
   })
+=======
+  .controller('LoginCtrl', function($scope) {
+     menuControl($scope);
+     loginInitialize();
+  })
+
+>>>>>>> ef927a6ad04ed68836424ec83eedb2b232d5f70f
   // That's all folks
   ;

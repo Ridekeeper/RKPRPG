@@ -1,0 +1,39 @@
+<snap-drawers data-snap-ignore="true">
+  <div snap-drawer>
+     <div>
+      <a href="#/vehicles-stolen" class="drawer-button">Vehicles Being Stolen</a>
+     </div>
+    <div>
+      <a href="#/login" class="drawer-button active-button">Login</a> 
+    </div>
+    <div>
+      <a href="#/settings" class="drawer-button">Settings</a> 
+    </div>
+  </div>
+</snap-drawers>
+
+<snap-content snap-options="snapOpts">
+ <div class="overlay">
+  <div class="overlay-box">
+    <img class="overlay-loader" src="img/ajax-loader.gif" />
+  </div>
+ </div>
+ <div id="top-bar">
+ <img src="./icon.png" snap-toggle id="snap-button">
+<h1>Login</h1>
+ </div>
+
+ <div id="main-view">
+   <div class="login">
+   <form>
+   <h2 class="login-text">Username
+   <input type="text" name="uname"></h2>
+   <h2 class="login-text">Password
+   <input type="text" name="pword"></h2>
+   </form>
+   <div id="domain"></div>
+   <h2 class="ui-button centered">Sign In</h2>
+   </div>
+ </div>
+</snap-content>
+

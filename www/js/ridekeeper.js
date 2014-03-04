@@ -6,6 +6,8 @@ function ridekeeper() {
 
   this.parse = new parse();
 
+  this.login = new login();
+
 }
 
 var Ridekeeper = new ridekeeper();

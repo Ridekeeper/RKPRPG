@@ -39,7 +39,8 @@ angular.module('ridekeeper.controllers', [])
   })
   .controller('LoginCtrl', function($scope) {
      menuControl($scope);
-     loginInitialize();
+     Ridekeeper.login.initialize();
+     snapper.disable();
   })
 
   // That's all folks

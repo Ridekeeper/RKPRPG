@@ -27,5 +27,5 @@ angular.module('myApp', ['ngRoute', 'ridekeeper', 'snap', 'ridekeeper.controller
         templateUrl: 'partials/login.html',
         controller: 'LoginCtrl'
       })
-      .otherwise({redirectTo: '/vehicles-stolen'});
+      .otherwise({redirectTo: '/login'});
   }]);

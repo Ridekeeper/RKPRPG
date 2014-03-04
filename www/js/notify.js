@@ -18,7 +18,4 @@ function hideLoader()
 function showLoader()
 {
   $(".overlay .overlay-loader").show();
-  showOverlay();
-  $("#toolong").hide(); 
-  setTimeout(function() { $("#toolong").show(); },30000); 
 }

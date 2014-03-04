@@ -5,7 +5,7 @@ angular.module('myApp', ['ngRoute', 'ridekeeper', 'snap', 'ridekeeper.controller
     $routeProvider
       .when('/vehicles-stolen', {
         templateUrl: 'partials/vehicles-stolen.html',
-        controller: 'MenuCtrl'
+        controller: 'StolenCtrl'
       })
       .when('/profile', {
         templateUrl: 'partials/profile.html',

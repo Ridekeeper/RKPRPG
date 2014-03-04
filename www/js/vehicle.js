@@ -104,7 +104,7 @@ function Vehicle()
   	query.find({
       success: function(results) 
       {
-        alert("Successfully retrieved " + results.length + " stolen vehicles.");
+        //alert("Successfully retrieved " + results.length + " stolen vehicles.");
         // Do something with the returned Parse.Object values
         var vehicleArray = [];
         for (var i = 0; i < results.length; i++) {

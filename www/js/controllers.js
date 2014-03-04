@@ -33,6 +33,10 @@ angular.module('ridekeeper.controllers', [])
      menuControl($scope);
      profileInitialize();
   })
+  .controller('StolenCtrl', function($scope) {
+     menuControl($scope);
+     stolenInitialize();
+  })
 
   // That's all folks
   ;

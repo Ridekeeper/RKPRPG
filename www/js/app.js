@@ -9,7 +9,7 @@ angular.module('myApp', ['ngRoute', 'ridekeeper', 'snap', 'ridekeeper.controller
       })
       .when('/profile', {
         templateUrl: 'partials/profile.html',
-        controller: 'MenuCtrl'
+        controller: 'ProfileCtrl'
       })
       .when('/vehicles', {
         templateUrl: 'partials/vehicles.html',

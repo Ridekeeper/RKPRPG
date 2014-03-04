@@ -20,7 +20,6 @@ function menuControl($scope) {
   }
 }
 
-
 angular.module('ridekeeper.controllers', [])
 
   .controller('MenuCtrl', function($scope) {
@@ -29,6 +28,10 @@ angular.module('ridekeeper.controllers', [])
   .controller('MapCtrl', function($scope) {
      menuControl($scope);
      mapInitialize();
+  })
+  .controller('ProfileCtrl', function($scope) {
+     menuControl($scope);
+     profileInitialize();
   })
 
   // That's all folks

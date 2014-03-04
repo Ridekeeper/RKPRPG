@@ -4,6 +4,7 @@ function convert(parseObject) {
   for (var i = 0; i < fields.length; i++) {
     vehicleObject[fields[i]] = parseObject.get(fields[i]);
   }
+  vehicleObject["objectId"] = parseObject.id;
   return vehicleObject;
 }
 

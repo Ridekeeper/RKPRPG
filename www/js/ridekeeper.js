@@ -7,6 +7,8 @@ function ridekeeper() {
   this.parse = new parse();
 
   this.login = new login();
+
+  this.registration = new registration();
  
   this.highlightedPage = "vehicles-stolen";
 }

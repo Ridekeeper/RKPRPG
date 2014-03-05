@@ -6,10 +6,9 @@ function profile() {
 		var username = parseUser.username;
 		var email = parseUser.email;
 		var phone = parseUser.phone;
-		$("#username").append(username);
-		$("#email").append(email);
-		$("#phone").append(phone);
-		$("#phone").append(document.cookie);
+		$("#username").val(username);
+		$("#email").val(email);
+		$("#phone").val(phone);
 
 		})
 		// Register buttons

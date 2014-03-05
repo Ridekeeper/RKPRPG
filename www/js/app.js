@@ -17,7 +17,7 @@ angular.module('myApp', ['ngRoute', 'ridekeeper', 'snap', 'ridekeeper.controller
       }) 
       .when('/settings', {
         templateUrl: 'partials/settings.html',
-        controller: 'MenuCtrl'
+        controller: 'SettingsCtrl'
       })
        .when('/vehicle-map', {
         templateUrl: 'partials/vehicle-map.html',

@@ -2,3 +2,12 @@
  margin-left:10px;
  margin-right:10px;
 }
+
+.active-setting {
+  color:white;
+  background-color: #007DA9;
+}
+
+.active-setting:hover {
+  color:white;
+}

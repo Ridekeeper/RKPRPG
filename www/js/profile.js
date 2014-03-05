@@ -30,7 +30,7 @@ function profile() {
     allowEdit: true,
     targetWidth: 200,
     targetHeight: 200,
-    sourceType: Camera.PictureSourceType.CAMERA,
+    sourceType: Camera.PictureSourceType.PHOTOLIBRARY,
     saveToPhotoAlbum: false
     });
 	}
@@ -46,7 +46,7 @@ function profile() {
     });
 	}
 
-	this.sourceSelected = function( buttonIndex ) {
+	function sourceSelected( buttonIndex ) {
 		if (buttonIndex == 1)
 			newCameraPicture();
 
@@ -57,7 +57,7 @@ function profile() {
 
 	this.newPicture = function() {
 			// Prompt for gallery or camera as source
-			  navigator.notification.confirm('Select a source for the new image', function(buttonIndex){Ridekeeper.profile.sourceSelected(buttonIndex);}, 'Image Source', ["Camera","Gallery"]);
-        }
+			  navigator.notification.confirm('Select a source for the new image', sourceSelected , 'Image Source', ["Camera","Gallery"]);
+  }
 
 }

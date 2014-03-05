@@ -32,7 +32,7 @@ angular.module('ridekeeper.controllers', [])
   })
   .controller('ProfileCtrl', function($scope) {
      menuControl($scope);
-     profileInitialize();
+     Ridekeeper.profile.initialize();
   })
   .controller('StolenCtrl', function($scope) {
      menuControl($scope);

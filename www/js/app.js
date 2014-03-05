@@ -31,5 +31,29 @@ angular.module('myApp', ['ngRoute', 'ridekeeper', 'snap', 'ridekeeper.controller
         templateUrl: 'partials/registration.html',
         controller: 'RegistrationCtrl'
       })
-      .otherwise({redirectTo: '/login'});
+      .otherwise({redirectTo: '/profile'});
   }]);
+
+  // Do the initial PhoneGap init
+  
+var app = {
+    // Application Constructor
+    initialize: function() {
+        this.bindEvents();
+    },
+    // Bind Event Listeners
+    //
+    // Bind any events that are required on startup. Common events are:
+    // 'load', 'deviceready', 'offline', and 'online'.
+    bindEvents: function() {
+      document.addEventListener('deviceready', app.onDeviceReady, false);
+      window.setTimeout( app.onDeviceReady, 5000 );
+    },
+    // deviceready Event Handler
+    //
+    // The scope of 'this' is the event. In order to call the 'receivedEvent'
+    // function, we must explicity call 'app.receivedEvent(...);'
+    onDeviceReady: function() {
+      angular.bootstrap(document, ['myApp']);
+    }
+};

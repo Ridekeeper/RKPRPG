@@ -1,1 +1,11 @@
-{"lib":{"www":{"id":"phonegap","version":"3.3.0","uri":"https://github.com/Ridekeeper/RKPRPG/archive/master.zip"}},"id":"com.ucla.Ridekeeper","name":"Ridekeeper"}
+{
+    "lib": {
+        "www": {
+            "id": "phonegap",
+            "version": "3.3.0",
+            "uri": "https://github.com/Ridekeeper/RKPRPG/archive/master.zip"
+        }
+    },
+    "id": "com.ucla.Ridekeeper",
+    "name": "Ridekeeper"
+}

@@ -7,11 +7,19 @@ function registration() {
     //$('#registration-button').click(function(){Ridekeeper.registration.register()});
     //alert("hi");
     // Register registration callback
-    $('#registration-button').click(function(){Ridekeeper.registration.goToLogin()});
+    $('#registration-button').click(function(){Ridekeeper.registration.register()});
   }
 
   this.register = function() {
-    
+    var username = $('#register-user').val();
+    var name = $('#register-name').val();
+    var email = $('#register-email').val();
+    var phone = $('#register-phone').val();
+    var password = $('#register-pass').val();
+    //alert(username + " " + password);
+    //var User = new user();
+    Ridekeeper.user.signUp(username, password, name, email, phone);
+    //alert("Registered");
   }
 
   this.goToLogin = function() {

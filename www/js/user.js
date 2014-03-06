@@ -52,18 +52,19 @@ function user() {
   };
 
 /////////////////////////////////////////////
-  this.signUp = function (username, password, email, phone) {
-    var user = new Parse.User();
-    user.set("username", username);
-    user.set("password", password);
-    user.set("email", email);
- 
+  this.signUp = function (username, password, name, email, phone) {
+    var User = new Parse.User();
+    User.set("username", username);
+    User.set("password", password);
+    User.set("name", name);
+    User.set("email", email);
+    User.set("phone", phone);
+    //user.save();
     // other fields can be set just like with Parse.Object
-    user.set("phone", phone);
- 
-    user.signUp(null, {
+    User.signUp(null, {
       success: function(user) {
         // Hooray! Let them use the app now.
+        Ridekeeper.registration.goToLogin();
       },
       error: function(user, error) {
         // Show the error message somewhere and let the user try again.
@@ -76,9 +77,12 @@ function user() {
     Parse.User.logIn(username, password, {
       success: function(user) {
         // Do stuff after successful login.
+        alert("Login success!");
+        window.location.hash = 'profile';
       },
       error: function(user, error) {
         // The login failed. Check error to see why.
+        alert("Login failed");
       }
     });
   };
@@ -90,18 +94,18 @@ function user() {
       alert("Error, user logout failure.");
   }
 
-
   this.currentUser = function () {
     var currentUser = Parse.User.current();
+    alert(currentUser.id);
     if (currentUser) {
       // do stuff with the user
-      return this.getCurrentUser(currentUser.objectId);
+      return currentUser;
     } else {
       // show the signup or login page
     }
   };
 
-  this.getCurrentUser = function (objectId, fun) {
+  /*this.getUserById = function (objectId, fun) {
     var User = Parse.Object.extend("User");
     var query = new Parse.Query(User);
     query.get(objectId, {
@@ -116,8 +120,33 @@ function user() {
       // error is an instance of Parse.Error.
       }
     });
-  };
+  };*/
 
+  this.removeUser = function (objectId)
+  {
+    var User = Parse.Object.extend("User");
+    var query = new Parse.Query(User);
+    query.get(objectId, {
+      success: function(object) {
+        // object is an instance of Parse.Object.
+          object.destroy({
+            success: function(object) {
+              // The object was deleted from the Parse Cloud.
+              //alert(object.get("make") + "," + object.get("model") + "was removed.");
+            },
+            error: function(object, error) {
+              // The delete failed.
+              // error is a Parse.Error with an error code and description.
+              alert('Error: object.destroy in removeUser failed');
+            }
+        });
+      },
+      error: function(object, error) {
+        // error is an instance of Parse.Error.
+        alert('Error: Query.get in removeUser failed');
+      }
+    });
+  };
 
 //Update doesnt work currently
   this.updateUser = function(field, newVal) {

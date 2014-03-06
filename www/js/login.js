@@ -10,7 +10,9 @@ function login() {
   }
 
   this.login = function() {
-    
+    var username = $('#login-user').val();
+    var password = $('#login-pass').val();
+    Ridekeeper.user.login(username, password);
   }
 
   this.goToRegistration = function() {

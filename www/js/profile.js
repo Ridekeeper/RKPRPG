@@ -1,17 +1,14 @@
 function profile() {
 
 	this.initialize = function() {
-		var User = new user();
-		User.getCurrentUser("WXO7vi6gjq", function userInfo (parseUser) {
-		var username = parseUser.username;
-		var email = parseUser.email;
-		var phone = parseUser.phone;
+		//var User = new user().currentUser();
+		var username = Parse.User.current().get("username");
+		var email = Parse.User.current().get("email");
+		var phone = Parse.User.current().get("phone");
 		$("#username").val(username);
 		$("#email").val(email);
 		$("#phone").val(phone);
-
-		})
-		// Register buttons
+		  // Register buttons
 		$('#change-profile-image-button').click(function(){Ridekeeper.profile.newPicture()});
 	}
 

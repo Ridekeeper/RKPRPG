@@ -44,29 +44,29 @@ function Vehicle()
   this.removeVehicle = function (objectId)
   {
   	var Vehicle = Parse.Object.extend("Vehicle");
-	var query = new Parse.Query(Vehicle);
-	query.get(objectId, {
-	  success: function(object) {
-      // object is an instance of Parse.Object.
-        object.destroy({
-          success: function(object) {
-          // The object was deleted from the Parse Cloud.
-            //alert(object.get("make") + "," + object.get("model") + "was removed.");
+	  var query = new Parse.Query(Vehicle);
+	  query.get(objectId, {
+	    success: function(object) {
+        // object is an instance of Parse.Object.
+          object.destroy({
+            success: function(object) {
+              // The object was deleted from the Parse Cloud.
+              //alert(object.get("make") + "," + object.get("model") + "was removed.");
 
-          },
-          error: function(object, error) {
-    	  // The delete failed.
-    	  // error is a Parse.Error with an error code and description.
-    	    alert('Error: object.destroy in removeVehicle failed');
-  		  }
-		});
+            },
+            error: function(object, error) {
+    	        // The delete failed.
+    	        // error is a Parse.Error with an error code and description.
+    	        alert('Error: object.destroy in removeVehicle failed');
+  		      }
+		    });
   	  },
 
   	  error: function(object, error) {
-      // error is an instance of Parse.Error.
+        // error is an instance of Parse.Error.
         alert('Error: Query.get in removeVehicle failed');
   	  }
-	});  	
+	  });  	
 
   };
 
@@ -137,5 +137,37 @@ function Vehicle()
       // error is an instance of Parse.Error.
   	  }
     });
+  };
+  this.updateVehicle = function(field, newVal) {
+    var currentVehicleId = "6TRZ2RR8ov";
+    var Vehicle = Parse.Object.extend("Vehicle");
+    var query = new Parse.Query(Vehicle);
+    query.equalTo("objectId", currentVehicleId);
+    query.first({
+      success: function(object) {
+        object.set(field, newVal);
+        object.save();
+      }
+    });
+
+  };
+
+  this.updateVehicleLicense = function(newLicense) {
+    this.updateVehicle("license", newLicense);
+  };
+
+  this.updateVehicleMake = function(newMake) {
+    //Check if valid username
+    this.updateVehicle("make", newMake);
+  };
+
+  this.updateVehicleModel = function(newModel) {
+
+    this.updateVehicle("model", newModel);
+  };
+
+  this.updateVehicleYear = function(newYear) {
+
+    this.updateVehicle("year", newYear);
   };
 }

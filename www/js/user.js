@@ -108,7 +108,7 @@ function user() {
 
   this.currentUser = function () {
     var currentUser = Parse.User.current();
-    alert(currentUser.id);
+    //alert(currentUser.id);
     if (currentUser) {
       // do stuff with the user
       return currentUser;
@@ -185,7 +185,7 @@ function user() {
     this.updateUser("name", newName);
   };
 
-  this.addVehicle = function (license, make, model, year)
+  this.addVehicle = function (license, make, model, year, successFun, errorFun)
   {
     var userId = Ridekeeper.user.currentUser().id;
     var Vehicle = Parse.Object.extend("Vehicle");
@@ -198,17 +198,8 @@ function user() {
 
     newVehicle.save(null, 
     {
-      success: function(newVehicle) 
-      {
-        // Execute any logic that should take place after the object is saved.
-        alert('New object created with objectId: ' + newVehicle.id);
-      },
-      error: function(newVehicle, error) 
-      {
-        // Execute any logic that should take place if the save fails.
-        // error is a Parse.Error with an error code and description.
-        alert('addVehicle failed');
-      }
+      success: successFun,
+      error: errorFun
     });
   };
 
@@ -252,7 +243,6 @@ function user() {
     query.find({
       success: function(results) 
       {
-        alert("Successfully retrieved " + results.length + " vehicles.");
         // Do something with the returned Parse.Object values
         var vehicleArray = [];
         for (var i = 0; i < results.length; i++) {

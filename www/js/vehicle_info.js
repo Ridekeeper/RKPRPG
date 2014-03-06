@@ -1,6 +1,14 @@
 var googleMap; // identifier for the Google Map
 var currentVehicleId; // identifier for the page's vehicle
+var currentVehicle; // contains page's vehicle
 var intervalId = null; //identifier for setInterval()
+
+function vehicleInfoInitialize() {
+  Ridekeeper.user.getVehicle(currentVehicleId, function(vehicleObject) {
+    mapInitialize();
+  });
+
+}
 
 /* Initializes the Google Map. Called once every time a vehicle page is loaded */
 function mapInitialize() {

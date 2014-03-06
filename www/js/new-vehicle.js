@@ -28,8 +28,16 @@ var newVehicle = {
       if (errors.length == 0) {
         // If there are no errors, add vehicle to server
         var User = Ridekeeper.user;
-        User.addVehicle(license, make, model, year);
-        //window.open("#/vehicles", "_self");
+        var successFun = function(newVehicle) {
+          window.open("#/vehicles", "_self");
+        }
+        var errorFun = function(newVehicle, error) {
+          $('#create-text').html('Failed to add vehicle.<br>Error Code: ' + error.code);
+          $('#create-text').css('color', '#f00');
+        }
+        User.addVehicle(license, make, model, year, successFun, errorFun);
+          $('#create-text').html('Adding vehicle...');
+          $('#create-text').css('color', '');
       } else {
         // Display each error on the top, and set each invalid field to red
         $('#error-list').empty();

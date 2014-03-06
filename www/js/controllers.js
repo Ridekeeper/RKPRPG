@@ -28,7 +28,7 @@ angular.module('ridekeeper.controllers', [])
   })
   .controller('MapCtrl', function($scope) {
      menuControl($scope);
-     mapInitialize();
+     vehicleInfoInitialize();
   })
   .controller('ProfileCtrl', function($scope) {
      menuControl($scope);

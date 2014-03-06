@@ -160,7 +160,6 @@ function user() {
     });
   };
 
-//Update doesnt work currently
   this.updateUser = function(name, email, phone) {
     Ridekeeper.user.currentUser().set("name", name);
     Ridekeeper.user.currentUser().set("email", email);

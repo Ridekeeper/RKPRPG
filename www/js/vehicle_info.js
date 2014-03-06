@@ -10,6 +10,7 @@ function vehicleInfoInitialize() {
   }
   Ridekeeper.user.getVehicle(pageVehicleId, function(vehicleObject) {
     mapInitialize();
+    currentVehicle = vehicleObject;
     $('#make').val(vehicleObject.make);
     $('#model').val(vehicleObject.model);
     $('#year').val(vehicleObject.year);
@@ -17,6 +18,22 @@ function vehicleInfoInitialize() {
   }, errorFun);
 
   newVehicle.initialize();
+
+  $('#remove').click(function() {
+    var deleteVehicle = confirm('Do you wish to delete the vehicle?');
+    if (deleteVehicle) {
+      var successFun = function() {
+        window.open('#/vehicles', '_self');
+      }
+      var errorFun = function(object, error) {
+        $('#create-text').html('Failed to remove vehicle.<br>Error Code: ' + error.code);
+        $('#create-text').css('color', '#f00');
+      }
+      Ridekeeper.user.removeVehicle(pageVehicleId, successFun, errorFun);
+        $('#create-text').html('Removing vehicle...');
+        $('#create-text').css('color', '#');
+    }
+  });
 
 }
 

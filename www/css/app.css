@@ -230,3 +230,7 @@ body {
 #error-list {
   display: none;
 }
+
+.red {
+  background-color: #F00;
+}

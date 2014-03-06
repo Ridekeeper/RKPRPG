@@ -87,6 +87,9 @@ body {
 
 #top-bar h1 {
   margin: 10px;
+  margin-left: 0px;
+  float: left;
+  left: 0px;
 }
 
 #main-view {
@@ -211,4 +214,19 @@ body {
   border-radius:10px;
   height: 300px;
   width: 80%;
+}
+
+#plus-button {
+  font-size: 2em;
+  margin: 5px;
+  float: right;
+  right: 0px;
+  border: 3px solid;
+  border-radius: 6px;
+  padding-left: 7px;
+  padding-right: 7px;
+}
+
+#error-list {
+  display: none;
 }

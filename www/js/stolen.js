@@ -1,7 +1,7 @@
 function stolenInitialize() {
-  var vehicle = new Vehicle();
+  var User = Ridekeeper.user;
 
-  vehicle.getStolenVehicleList(function(vehicleArray) {
+  User.getStolenVehicleList(function(vehicleArray) {
     for (var i = 0; i < vehicleArray.length; i++) {
 
       var vehicle = vehicleArray[i];

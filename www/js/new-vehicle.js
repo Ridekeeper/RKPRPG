@@ -27,9 +27,9 @@ var newVehicle = {
 
       if (errors.length == 0) {
         // If there are no errors, add vehicle to server
-        var vehicle = new Vehicle();
-        vehicle.addVehicle(license, make, model, "testowner", year);
-        window.open("#/vehicles", "_self");
+        var User = Ridekeeper.user();
+        User.addVehicle(license, make, model, year);
+        //window.open("#/vehicles", "_self");
       } else {
         // Display each error on the top, and set each invalid field to red
         $('#error-list').empty();

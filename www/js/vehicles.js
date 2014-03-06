@@ -1,11 +1,11 @@
 function vehiclesInitialize() {
-  var vehicle = new Vehicle();
+  var User = Ridekeeper.user;
 
   $('#plus-button').click(function(){
     window.location.hash = "new-vehicle";
   });
 
-  vehicle.getUserVehicleList("testID", function(vehicleArray) {
+  User.getUserVehicleList(function(vehicleArray) {
     for (var i = 0; i < vehicleArray.length; i++) {
 
       var vehicle = vehicleArray[i];

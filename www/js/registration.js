@@ -8,6 +8,7 @@ function registration() {
     //alert("hi");
     // Register registration callback
     $('#registration-button').click(function(){Ridekeeper.registration.register()});
+    $('#login-back-button').click(function(){Ridekeeper.registration.goToLogin()});
   }
 
   this.register = function() {

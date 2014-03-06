@@ -27,7 +27,7 @@ var newVehicle = {
 
       if (errors.length == 0) {
         // If there are no errors, add vehicle to server
-        var User = Ridekeeper.user();
+        var User = Ridekeeper.user;
         User.addVehicle(license, make, model, year);
         //window.open("#/vehicles", "_self");
       } else {

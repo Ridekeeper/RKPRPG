@@ -92,6 +92,9 @@ function user() {
     var currentUser = Parse.User.current();  // this will now be null
     if (currentUser)
       alert("Error, user logout failure.");
+    else
+      window.location.hash = 'login';
+
   }
 
   this.currentUser = function () {
@@ -101,6 +104,7 @@ function user() {
       // do stuff with the user
       return currentUser;
     } else {
+      return NULL;
       // show the signup or login page
     }
   };

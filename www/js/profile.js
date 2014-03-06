@@ -1,15 +1,18 @@
 function profile() {
 
 	this.initialize = function() {
-		//var User = new user().currentUser();
-		var username = Parse.User.current().get("username");
-		var email = Parse.User.current().get("email");
-		var phone = Parse.User.current().get("phone");
-		$("#username").val(username);
-		$("#email").val(email);
-		$("#phone").val(phone);
+		var User = Ridekeeper.user.currentUser();
+		if (User) {
+		  var username = User.get("username");
+		  var email = User.get("email");
+		  var phone = User.get("phone");
+		  $("#username").val(username);
+		  $("#email").val(email);
+		  $("#phone").val(phone);
+		}
 		  // Register buttons
 		$('#change-profile-image-button').click(function(){Ridekeeper.profile.newPicture()});
+		$('#logout-button').click(function(){Ridekeeper.user.logout()});
 	}
 
   function onPicSuccess(imageURI){

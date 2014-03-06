@@ -35,7 +35,7 @@ angular.module('myApp', ['ngRoute', 'ridekeeper', 'snap', 'ridekeeper.controller
         templateUrl: 'partials/new-vehicle.html',
         controller: 'NewVehicleCtrl'
       })
-      .otherwise({redirectTo: '/profile'});
+      .otherwise({redirectTo: '/login'});
   }]);
 
   // Do the initial PhoneGap init

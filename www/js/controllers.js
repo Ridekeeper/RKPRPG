@@ -52,6 +52,10 @@ angular.module('ridekeeper.controllers', [])
      Ridekeeper.registration.initialize();
      snapper.disable();
   })
+  .controller('NewVehicleCtrl', function($scope) {
+     menuControl($scope);
+     newVehicle.initialize();
+  })
 
   // That's all folks
   ;

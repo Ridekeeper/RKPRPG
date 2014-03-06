@@ -31,6 +31,10 @@ angular.module('myApp', ['ngRoute', 'ridekeeper', 'snap', 'ridekeeper.controller
         templateUrl: 'partials/registration.html',
         controller: 'RegistrationCtrl'
       })
+       .when('/new-vehicle', {
+        templateUrl: 'partials/new-vehicle.html',
+        controller: 'NewVehicleCtrl'
+      })
       .otherwise({redirectTo: '/profile'});
   }]);
 

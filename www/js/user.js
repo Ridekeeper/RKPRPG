@@ -282,7 +282,7 @@ function user() {
     });
   };
 
-  this.getVehicle = function (objectId, fun)
+  this.getVehicle = function (objectId, successFun, errorFun)
   {
     ////Currently alerts the vehicle make haha
     //var myId = "g5teWNiFl5";
@@ -291,28 +291,33 @@ function user() {
     query.get(objectId, {
       success: function(object) {
         // object is an instance of Parse.Object.
-          alert(object.get("make") + "," + object.get("model"));
-          var vehicleObject = convert(object);
-          fun(vehicleObject);
+        //alert(object.get("make") + "," + object.get("model"));
+        var vehicleObject = convert(object);
+        successFun(vehicleObject);
       },
 
-      error: function(object, error) {
-      // error is an instance of Parse.Error.
-      }
+      error: errorFun
     });
   };
 
-  this.updateVehicle = function(field, newVal) {
-    var currentVehicleId = "6TRZ2RR8ov";
+  this.updateVehicle = function(vehicleId, newValues, successFun, errorFun) {
     var Vehicle = Parse.Object.extend("Vehicle");
     var query = new Parse.Query(Vehicle);
-    query.equalTo("objectId", currentVehicleId);
-    query.first({
-      success: function(object) {
-        object.set(field, newVal);
-        object.save();
-      }
-    });
+    query.equalTo("objectId", vehicleId);
+    query.find().then(function(list) {
+        if (list.length == 0) {
+          return Parse.Promise.error(new Parse.Error(1,"Vehicle not found"));
+        }
+        var object = list[0];
+        for (var i = 0; i < newValues.length; i++) {
+          object.set(newValues[i].field, newValues[i].value);
+        }
+        return object.save();
+      }).then(function(object) {
+        successFun();
+      }, function(error) {
+        errorFun(undefined, error);
+      });
 
   };
 

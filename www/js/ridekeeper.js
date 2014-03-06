@@ -20,6 +20,9 @@ function ridekeeper() {
   this.settings.initialize();
 
   this.highlightedPage = "vehicles-stolen";
+
+  this.currentPage = "vehicle-stolen";
+
 }
 
 var Ridekeeper = new ridekeeper();

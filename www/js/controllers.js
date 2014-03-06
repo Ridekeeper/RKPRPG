@@ -28,6 +28,7 @@ angular.module('ridekeeper.controllers', [])
   })
   .controller('MapCtrl', function($scope) {
      menuControl($scope);
+     Ridekeeper.currentPage = "vehicle-map";
      vehicleInfoInitialize();
   })
   .controller('ProfileCtrl', function($scope) {
@@ -58,6 +59,7 @@ angular.module('ridekeeper.controllers', [])
   })
   .controller('NewVehicleCtrl', function($scope) {
      menuControl($scope);
+     Ridekeeper.currentPage = "new-vehicle";
      newVehicle.initialize();
   })
 

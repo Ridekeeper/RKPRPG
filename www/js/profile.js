@@ -3,17 +3,35 @@ function profile() {
 	this.initialize = function() {
 		var User = Ridekeeper.user.currentUser();
 		if (User) {
-		  var username = User.get("username");
+		  var name = User.get("name");
 		  var email = User.get("email");
 		  var phone = User.get("phone");
-		  $("#username").val(username);
+		  $("#name").val(name);
 		  $("#email").val(email);
 		  $("#phone").val(phone);
 		}
 		  // Register buttons
 		$('#change-profile-image-button').click(function(){Ridekeeper.profile.newPicture()});
 		$('#logout-button').click(function(){Ridekeeper.user.logout()});
+		$('#save-button').click(function(){Ridekeeper.profile.saveProfile()});
 	}
+
+    this.saveProfile = function() {
+        var User = Ridekeeper.user.currentUser();
+        
+        User.set("name", $("#name").val());
+		User.set("email", $("#email").val());
+		User.set("phone", $("#phone").val());        
+        User.save(null, {
+        	success: function(User) {
+        		alert("Save Successful");
+        	},
+        	error: function(user, error) {
+        		alert("Save Unsuccessful:\n"+error.message);
+        		console.log(error.message);
+        	}
+        });
+    }
 
   function onPicSuccess(imageURI){
 		$('#profile-image').attr('src',imageURI); 

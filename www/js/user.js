@@ -160,29 +160,10 @@ function user() {
     });
   };
 
-//Update doesnt work currently
-  this.updateUser = function(field, newVal) {
-    Ridekeeper.user.currentUser().set("field", newVal);
-  };
-
-  this.updateUsername = function(newUsername) {
-    //Check if valid username
-    this.updateUser("username", newUsername);
-  };
-
-  this.updateUserEmail = function(newEmail) {
-
-    this.updateUser("email", newEmail);
-  };
-
-  this.updatePhone = function(newPhone) {
-
-    this.updateUser("phone", newPhone);
-  };
-
-  this.updateName = function(newName) {
-
-    this.updateUser("name", newName);
+  this.updateUser = function(name, email, phone) {
+    Ridekeeper.user.currentUser().set("name", name);
+    Ridekeeper.user.currentUser().set("email", email);
+    Ridekeeper.user.currentUser().set("phone", phone);
   };
 
   this.addVehicle = function (license, make, model, year, successFun, errorFun)

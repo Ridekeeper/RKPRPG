@@ -35,7 +35,7 @@ var newVehicle = {
           $('#create-text').html('Failed to add vehicle.<br>Error Code: ' + error.code);
           $('#create-text').css('color', '#f00');
         }
-        if (ridekeeper.currentPage == "new-vehicle") {
+        if (Ridekeeper.currentPage == "new-vehicle") {
           User.addVehicle(license, make, model, year, successFun, errorFun);
           $('#create-text').html('Adding vehicle...');
           $('#create-text').css('color', '');

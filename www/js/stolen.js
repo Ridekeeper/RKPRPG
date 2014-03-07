@@ -6,7 +6,7 @@ function stolenInitialize() {
 
       var vehicle = vehicleArray[i];
       var vehicleText = vehicle.year + ' ' + vehicle.make + ' ' + vehicle.model;
-      var vehicleHTML = '<div class="list-item" onclick="setVehiclePage(1)">'
+      var vehicleHTML = '<div class="list-item" onclick="setVehiclePage(\''+ vehicle.objectId + '\', true)">'
                         + vehicleText + '</div>';
 
       $('#stolen-list').append(vehicleHTML);

@@ -2,7 +2,8 @@ var googleMap; // identifier for the Google Map
 var pageVehicleId; // identifier for the page's vehicle
 var currentVehicle; // contains page's vehicle
 var intervalId = null; //identifier for setInterval()
-var oldPos = null;
+var oldPos = null; //Stores the position of the vehicle last time it was updated
+var vehicleStolen; //Indicates whether currentVehicle is stolen
 
 function vehicleInfoInitialize() {
   var errorFun = function(vehicleObject, error) {
@@ -22,25 +23,41 @@ function vehicleInfoInitialize() {
     }
   }, errorFun);
 
-  newVehicle.initialize();
+  if (vehicleStolen) {
+    $('input').attr('readonly', true);
+    $('#track').css('display', 'block'); // Show track vehicle button
+    $('#enter-chatroom').css('display', 'block'); // Show enter chatroom button
+  
+    $('#track').click(function() {
+      window.open('#/track', '_self'); // Page does not yet exist
+    });
+    $('#enter-chatroom').click(function() {
+      window.open('#/chatroom', '_self'); // Page does not yet exist
+    });
 
-  $('#remove').click(function() {
-    var deleteVehicle = confirm('Do you wish to delete the vehicle?');
-    if (deleteVehicle) {
-      var successFun = function() {
-        window.open('#/vehicles', '_self');
+  } else {
+    newVehicle.initialize();
+
+    $('#remove').css('display', 'block'); // Show remove vehicle button
+    $('#remove').click(function() {
+      var deleteVehicle = confirm('Do you wish to delete the vehicle?');
+      if (deleteVehicle) {
+        var successFun = function() {
+          window.open('#/vehicles', '_self');
+        }
+        var errorFun = function(object, error) {
+          $('#create-text').html('Failed to remove vehicle.<br>Error Code: ' + error.code);
+          $('#create-text').css('color', '#f00');
+          document.getElementById("create-text").scrollIntoView();
+        }
+        Ridekeeper.user.removeVehicle(pageVehicleId, successFun, errorFun);
+          $('#create-text').html('Removing vehicle...');
+          $('#create-text').css('color', '#');
+          document.getElementById("create-text").scrollIntoView();
       }
-      var errorFun = function(object, error) {
-        $('#create-text').html('Failed to remove vehicle.<br>Error Code: ' + error.code);
-        $('#create-text').css('color', '#f00');
-        document.getElementById("create-text").scrollIntoView();
-      }
-      Ridekeeper.user.removeVehicle(pageVehicleId, successFun, errorFun);
-        $('#create-text').html('Removing vehicle...');
-        $('#create-text').css('color', '#');
-        document.getElementById("create-text").scrollIntoView();
-    }
-  });
+    });
+
+  }
 
 }
 
@@ -116,7 +133,8 @@ function updateMap() {
 }
 
 // Sets up page when partial is loaded
-function setVehiclePage(vehicleIdentifier) {
+function setVehiclePage(vehicleIdentifier, stolen) {
   pageVehicleId = vehicleIdentifier;
+  vehicleStolen = stolen;
   window.location = "#/vehicle-map";
 }

@@ -1,5 +1,7 @@
 var newVehicle = {
   initialize : function() {
+    $('#create').css('display', 'block'); // Show button
+
     $("#create").click(function() {
       var make = $("#make").val();
       var model = $("#model").val();

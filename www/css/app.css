@@ -240,3 +240,8 @@ body {
 .red {
   background-color: #F00;
 }
+
+/* Only some of these buttons should be displayed on a given page */
+#create, #remove, #track, #enter-chatroom {
+  display: none;
+}

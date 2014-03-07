@@ -10,7 +10,7 @@ function vehiclesInitialize() {
 
       var vehicle = vehicleArray[i];
       var vehicleText = vehicle.year + ' ' + vehicle.make + ' ' + vehicle.model;
-      var vehicleHTML = '<div class="list-item" onclick="setVehiclePage(\''+ vehicle.objectId + '\')">'
+      var vehicleHTML = '<div class="list-item" onclick="setVehiclePage(\''+ vehicle.objectId + '\', false)">'
                         + vehicleText + '</div>';
 
       $('#vehicle-list').append(vehicleHTML);

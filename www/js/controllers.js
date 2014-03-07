@@ -14,10 +14,12 @@ function menuControl($scope) {
     $scope.snapOpts.disable = 'none';
   };
   
+  // Stop the map on the vehicle page from updating
   if (intervalId != null){
     clearInterval(intervalId);
     intervalId = null;
   }
+  oldPos = null;
 
 }
 

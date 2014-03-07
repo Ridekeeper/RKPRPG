@@ -14,6 +14,10 @@ function convert(parseObject) {
     vehicleObject[fields[i]] = parseObject.get(fields[i]);
   }
   vehicleObject["objectId"] = parseObject.id;
+  geoPoint = parseObject.get("pos");
+  if (geoPoint){
+    vehicleObject["location"] = new google.maps.LatLng(geoPoint.latitude, geoPoint.longitude);
+  }
   return vehicleObject;
 }
 
@@ -185,7 +189,7 @@ function user() {
   };
 
   
-  this.removeVehicle = function (objectId)
+  this.removeVehicle = function (objectId, successFun, errorFun)
   {
     var Vehicle = Parse.Object.extend("Vehicle");
     var query = new Parse.Query(Vehicle);
@@ -193,23 +197,12 @@ function user() {
       success: function(object) {
         // object is an instance of Parse.Object.
           object.destroy({
-            success: function(object) {
-              // The object was deleted from the Parse Cloud.
-              //alert(object.get("make") + "," + object.get("model") + "was removed.");
-
-            },
-            error: function(object, error) {
-              // The delete failed.
-              // error is a Parse.Error with an error code and description.
-              alert('Error: object.destroy in removeVehicle failed');
-            }
+            success: successFun,
+            error: errorFun
         });
       },
 
-      error: function(object, error) {
-        // error is an instance of Parse.Error.
-        alert('Error: Query.get in removeVehicle failed');
-      }
+      error: errorFun
     });   
 
   };

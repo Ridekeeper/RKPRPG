@@ -34,6 +34,7 @@ var newVehicle = {
         var errorFun = function(newVehicle, error) {
           $('#create-text').html('Failed to add vehicle.<br>Error Code: ' + error.code);
           $('#create-text').css('color', '#f00');
+          document.getElementById("create-text").scrollIntoView();
         }
         if (Ridekeeper.currentPage == "new-vehicle") {
           User.addVehicle(license, make, model, year, successFun, errorFun);
@@ -47,6 +48,7 @@ var newVehicle = {
           User.updateVehicle(pageVehicleId, fields, successFun, errorFun);
           $('#create-text').html('Updating vehicle...');
           $('#create-text').css('color', '');
+          document.getElementById("create-text").scrollIntoView();
         }
       } else {
         // Display each error on the top, and set each invalid field to red

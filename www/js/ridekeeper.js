@@ -39,6 +39,9 @@ function ridekeeper() {
   }
 
   this.highlightedPage = "vehicles-stolen";
+
+  this.currentPage = "vehicle-stolen";
+
 }
 
 var Ridekeeper = new ridekeeper();

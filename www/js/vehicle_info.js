@@ -2,6 +2,7 @@ var googleMap; // identifier for the Google Map
 var pageVehicleId; // identifier for the page's vehicle
 var currentVehicle; // contains page's vehicle
 var intervalId = null; //identifier for setInterval()
+var oldPos = null;
 
 function vehicleInfoInitialize() {
   var errorFun = function(vehicleObject, error) {
@@ -9,12 +10,16 @@ function vehicleInfoInitialize() {
     window.open("#/vehicles", "_self");
   }
   Ridekeeper.user.getVehicle(pageVehicleId, function(vehicleObject) {
-    mapInitialize();
     currentVehicle = vehicleObject;
     $('#make').val(vehicleObject.make);
     $('#model').val(vehicleObject.model);
     $('#year').val(vehicleObject.year);
     $('#license').val(vehicleObject.license);
+    if (!vehicleObject.location) {
+      $('#map-message').css('display', 'block');    
+    } else {
+      mapInitialize(vehicleObject.location);
+    }
   }, errorFun);
 
   newVehicle.initialize();
@@ -28,19 +33,21 @@ function vehicleInfoInitialize() {
       var errorFun = function(object, error) {
         $('#create-text').html('Failed to remove vehicle.<br>Error Code: ' + error.code);
         $('#create-text').css('color', '#f00');
+        document.getElementById("create-text").scrollIntoView();
       }
       Ridekeeper.user.removeVehicle(pageVehicleId, successFun, errorFun);
         $('#create-text').html('Removing vehicle...');
         $('#create-text').css('color', '#');
+        document.getElementById("create-text").scrollIntoView();
     }
   });
 
 }
 
 /* Initializes the Google Map. Called once every time a vehicle page is loaded */
-function mapInitialize() {
+function mapInitialize(location) {
   var mapOptions = {
-    center: getVehiclePosition(pageVehicleId),
+    center: location,
     zoom: 20,
     disableDefaultUI: true,
     draggable: false,
@@ -53,9 +60,9 @@ function mapInitialize() {
   updateMap();
 }
 
-//Stub function that returns vehicle location
+//Test function that is no longer used
 var curPos = 0;
-function getVehiclePosition(vehicleId) {
+function getVehiclePosition() {
   var pos;
   if (pageVehicleId == 1) {
     if (curPos == 0) {
@@ -79,18 +86,32 @@ function getVehiclePosition(vehicleId) {
 var curMarker = null;
 function updateMap() {
   
-  pos = getVehiclePosition(pageVehicleId);
-  
-  if (curMarker != null) {
-    curMarker.setMap(null);
-  }
-  curMarker = new google.maps.Marker({
-    position: pos,
-    map: googleMap,
+  Ridekeeper.user.getVehicle(pageVehicleId, function(object) {
+    $('#map-message').css('display', 'none');
+
+    if (!object.location) {
+      $('#map-message').css('display', 'block');
+      return  
+    }
+
+    var pos = object.location;
+
+    // Only change map position if it changed
+    if (oldPos == null || !oldPos.equals(pos)) {
+      if (curMarker != null) {
+        curMarker.setMap(null);
+      }
+      curMarker = new google.maps.Marker({
+        position: pos,
+        map: googleMap,
+      });
+      googleMap.setCenter(pos);
+      oldPos = pos;
+    }
     
-  });
-  
-  googleMap.setCenter(pos);
+  }, function(object, error) {
+    $('#map-message').css('display', 'block');    
+  })
   
 }
 

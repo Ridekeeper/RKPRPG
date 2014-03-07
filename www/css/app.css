@@ -216,6 +216,12 @@ body {
   width: 80%;
 }
 
+#map-message {
+  text-align: center;
+  color: #F00;
+  display: none;
+}
+
 #plus-button {
   font-size: 2em;
   margin: 5px;

@@ -14,6 +14,10 @@ function convert(parseObject) {
     vehicleObject[fields[i]] = parseObject.get(fields[i]);
   }
   vehicleObject["objectId"] = parseObject.id;
+  geoPoint = parseObject.get("pos");
+  if (geoPoint){
+    vehicleObject["location"] = new google.maps.LatLng(geoPoint.latitude, geoPoint.longitude);
+  }
   return vehicleObject;
 }
 

@@ -235,9 +235,17 @@ function user() {
   this.getStolenVehicleList = function (fun)
   {
     //List all stolen vehicles
+    //Hard code a user location until we get it from Phonegap API
+    var userLatitude = 34.068501;
+    var userLongitude = -118.4401;
+    //One degree divided by 60 is around a mile
+    var southwestOfUser = new Parse.GeoPoint(userLatitude-(1/60), userLongitude-(1/60));
+    var northeastOfUser = new Parse.GeoPoint(userLatitude+(1/60), userLongitude+(1/60));
+
     var Vehicle = Parse.Object.extend("Vehicle");
     var query = new Parse.Query(Vehicle);
     query.equalTo("alertLevel", "STOLEN");
+    query.withinGeoBox("pos", southwestOfUser, northeastOfUser);
     query.find({
       success: function(results) 
       {
@@ -295,6 +303,7 @@ function user() {
 
   };
 
+//Dont think these are used
   this.updateVehicleLicense = function(newLicense) {
     this.updateVehicle("license", newLicense);
   };

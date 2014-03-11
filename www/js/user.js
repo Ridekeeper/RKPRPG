@@ -263,6 +263,22 @@ function user() {
       }
     });
   };
+  
+  this.setVehicleStolen = function(objectId)
+  {
+    var Vehicle = Parse.Object.extend("Vehicle");
+    var query = new Parse.Query(Vehicle);
+    query.get(objectId, {
+      success: function(object) {
+        object.set("alertLevel", "STOLEN");
+        object.save();
+        alert(object.id + "was set to " + object.get("alertLevel"));
+      },
+      error: function() {
+        alert("Error in setVehicleStolen");
+      }
+    });
+  };
 
   this.getVehicle = function (objectId, successFun, errorFun)
   {

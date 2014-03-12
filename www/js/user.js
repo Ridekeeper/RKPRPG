@@ -90,8 +90,9 @@ function user() {
     Parse.User.logIn(username, password, {
       success: function(user) {
         // Do stuff after successful login.
+
         alert("Login success!");
-        window.location.hash = 'profile';
+        window.location.hash = 'vehicles';
       },
       error: function(user, error) {
         // The login failed. Check error to see why.

@@ -64,6 +64,10 @@ var newVehicle = {
       }
 
     });
+
+    $('#cancel').click(function() {
+      window.open("#/vehicles", "_self");
+    });
   },
 
   /* Returns a string if there is an error parsing the year, or a whole number

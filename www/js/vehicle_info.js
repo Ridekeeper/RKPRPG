@@ -23,6 +23,10 @@ function vehicleInfoInitialize() {
     }
   }, errorFun);
 
+    $('#back').click(function() {
+      window.open("#/vehicles", "_self");
+    });
+
   if (vehicleStolen) {
     $('input').attr('readonly', true);
     $('#track').css('display', 'block'); // Show track vehicle button
@@ -136,5 +140,5 @@ function updateMap() {
 function setVehiclePage(vehicleIdentifier, stolen) {
   pageVehicleId = vehicleIdentifier;
   vehicleStolen = stolen;
-  window.location = "#/vehicle-map";
+  window.open("#/vehicle-map", "_self");
 }

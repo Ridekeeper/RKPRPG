@@ -2,7 +2,7 @@ function vehiclesInitialize() {
   var User = Ridekeeper.user;
 
   $('#plus-button').click(function(){
-    window.location.hash = "new-vehicle";
+    window.open("#/new-vehicle", "_self");
   });
 
   User.getUserVehicleList(function(vehicleArray) {

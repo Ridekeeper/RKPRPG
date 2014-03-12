@@ -12,6 +12,7 @@ function vehicleInfoInitialize() {
   }
   Ridekeeper.user.getVehicle(pageVehicleId, function(vehicleObject) {
     currentVehicle = vehicleObject;
+    $('#top-bar h1').text('Vehicle: ' + getVehicleTitle(vehicleObject));
     $('#make').val(vehicleObject.make);
     $('#model').val(vehicleObject.model);
     $('#year').val(vehicleObject.year);
@@ -23,9 +24,9 @@ function vehicleInfoInitialize() {
     }
   }, errorFun);
 
-    $('#back').click(function() {
-      window.open("#/vehicles", "_self");
-    });
+  $('#back').click(function() {
+    window.open("#/vehicles", "_self");
+  });
 
   if (vehicleStolen) {
     $('input').attr('readonly', true);

@@ -9,11 +9,15 @@ function vehiclesInitialize() {
     for (var i = 0; i < vehicleArray.length; i++) {
 
       var vehicle = vehicleArray[i];
-      var vehicleText = vehicle.year + ' ' + vehicle.make + ' ' + vehicle.model;
+      var vehicleText = getVehicleTitle(vehicle);
       var vehicleHTML = '<div class="list-item" onclick="setVehiclePage(\''+ vehicle.objectId + '\', false)">'
                         + vehicleText + '</div>';
 
       $('#vehicle-list').append(vehicleHTML);
     }
   });
+}
+
+function getVehicleTitle(vehicle) {
+  return vehicle.year + ' ' + vehicle.make + ' ' + vehicle.model;
 }

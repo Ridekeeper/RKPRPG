@@ -232,16 +232,11 @@ function user() {
     ///////Ridekeeper.user
   };
 
-  this.getStolenVehicleList = function (fun)
+  this.getStolenVehicleList = function (latitude, longitude, fun)
   {
-    //List all stolen vehicles
-    //Hard code a user location until we get it from Phonegap API
-    var userLatitude = 34.068501;
-    var userLongitude = -118.4401;
-    //One degree divided by 60 is around a mile
-    var southwestOfUser = new Parse.GeoPoint(userLatitude-(1/60), userLongitude-(1/60));
-    var northeastOfUser = new Parse.GeoPoint(userLatitude+(1/60), userLongitude+(1/60));
-
+    //(1/60) of a degree is about a mile
+    var southwestOfUser = new Parse.GeoPoint(latitude-(1/60), longitude-(1/60));
+    var northeastOfUser = new Parse.GeoPoint(latitude+(1/60), longitude+(1/60));
     var Vehicle = Parse.Object.extend("Vehicle");
     var query = new Parse.Query(Vehicle);
     query.equalTo("alertLevel", "STOLEN");
@@ -249,8 +244,6 @@ function user() {
     query.find({
       success: function(results) 
       {
-        //alert("Successfully retrieved " + results.length + " stolen vehicles.");
-        // Do something with the returned Parse.Object values
         var vehicleArray = [];
         for (var i = 0; i < results.length; i++) {
           vehicleArray.push(convert(results[i]));
@@ -264,6 +257,22 @@ function user() {
     });
   };
   
+  this.setVehiclePosition = function(lat, long, objectId) 
+  {
+    var Vehicle = Parse.Object.extend("Vehicle");
+    var query = new Parse.Query(Vehicle);
+    query.get(objectId, {
+      success: function(object) {
+        var pos = new Parse.GeoPoint({latitude: lat, longitude: long});
+        object.set("pos", pos);
+        object.save();
+      },
+      error: function() {
+        alert("Error in setVehicleStolen");
+      }
+    });
+  };
+
   this.setVehicleStolen = function(objectId)
   {
     var Vehicle = Parse.Object.extend("Vehicle");

@@ -20,7 +20,8 @@ function menuControl($scope) {
     intervalId = null;
   }
   oldPos = null;
-
+  oldCurrentLoc = null;
+  Ridekeeper.currentPage = null;
 }
 
 angular.module('ridekeeper.controllers', [])
@@ -63,6 +64,11 @@ angular.module('ridekeeper.controllers', [])
      menuControl($scope);
      Ridekeeper.currentPage = "new-vehicle";
      newVehicle.initialize();
+  })
+  .controller('TrackCtrl', function($scope) {
+     menuControl($scope);
+     Ridekeeper.currentPage = "track";
+     trackInitialize();
   })
 
   // That's all folks

@@ -8,7 +8,11 @@ var vehicleStolen; //Indicates whether currentVehicle is stolen
 function vehicleInfoInitialize() {
   var errorFun = function(vehicleObject, error) {
     alert('Error retreiving vehicle.\nError Code: ' + error.code);
-    window.open("#/vehicles", "_self");
+    if (vehicleStolen) {
+      window.open("#/vehicles-stolen", "_self");
+    } else {
+      window.open("#/vehicles", "_self");
+    }
   }
   Ridekeeper.user.getVehicle(pageVehicleId, function(vehicleObject) {
     currentVehicle = vehicleObject;
@@ -25,17 +29,21 @@ function vehicleInfoInitialize() {
   }, errorFun);
 
   $('#back').click(function() {
-    window.open("#/vehicles", "_self");
+    if (vehicleStolen) {
+      window.open("#/vehicles-stolen", "_self");
+    } else {
+      window.open("#/vehicles", "_self");
+    }
+  });
+
+  $('#track').click(function() {
+    window.open('#/track', '_self');
   });
 
   if (vehicleStolen) {
     $('input').attr('readonly', true);
-    $('#track').css('display', 'block'); // Show track vehicle button
     $('#enter-chatroom').css('display', 'block'); // Show enter chatroom button
   
-    $('#track').click(function() {
-      window.open('#/track', '_self'); // Page does not yet exist
-    });
     $('#enter-chatroom').click(function() {
       window.open('#/chatroom', '_self'); // Page does not yet exist
     });
@@ -66,22 +74,6 @@ function vehicleInfoInitialize() {
 
 }
 
-/* Initializes the Google Map. Called once every time a vehicle page is loaded */
-function mapInitialize(location) {
-  var mapOptions = {
-    center: location,
-    zoom: 20,
-    disableDefaultUI: true,
-    draggable: false,
-    mapTypeControl: true,
-
-  };
-  googleMap = new google.maps.Map(document.getElementById("map-canvas"),
-    mapOptions);
-  intervalId = setInterval(updateMap, 3000);
-  updateMap();
-}
-
 //Test function that is no longer used
 var curPos = 0;
 function getVehiclePosition() {
@@ -101,40 +93,6 @@ function getVehiclePosition() {
   } 
   curPos = (curPos + 1) % 2;
   return pos
-}
-
-
-//Called every few seconds to update the vehicle position on the map
-var curMarker = null;
-function updateMap() {
-  
-  Ridekeeper.user.getVehicle(pageVehicleId, function(object) {
-    $('#map-message').css('display', 'none');
-
-    if (!object.location) {
-      $('#map-message').css('display', 'block');
-      return  
-    }
-
-    var pos = object.location;
-
-    // Only change map position if it changed
-    if (oldPos == null || !oldPos.equals(pos)) {
-      if (curMarker != null) {
-        curMarker.setMap(null);
-      }
-      curMarker = new google.maps.Marker({
-        position: pos,
-        map: googleMap,
-      });
-      googleMap.setCenter(pos);
-      oldPos = pos;
-    }
-    
-  }, function(object, error) {
-    $('#map-message').css('display', 'block');    
-  })
-  
 }
 
 // Sets up page when partial is loaded

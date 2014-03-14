@@ -6,6 +6,9 @@ function vehiclesInitialize() {
   });
 
   User.getUserVehicleList(function(vehicleArray) {
+
+    var vehicles = "";
+
     for (var i = 0; i < vehicleArray.length; i++) {
 
       var vehicle = vehicleArray[i];
@@ -13,8 +16,10 @@ function vehiclesInitialize() {
       var vehicleHTML = '<div class="list-item" onclick="setVehiclePage(\''+ vehicle.objectId + '\', false)">'
                         + vehicleText + '</div>';
 
-      $('#vehicle-list').append(vehicleHTML);
+      vehicles += vehicleHTML;
     }
+
+    $('#vehicle-list').html(vehicles);
   });
 }
 

@@ -63,5 +63,26 @@ var app = {
     // function, we must explicity call 'app.receivedEvent(...);'
     onDeviceReady: function() {
       angular.bootstrap(document, ['myApp']);
+
+       // register for push notifications
+       if (typeof parsePlugin != 'undefined' )
+      {
+        var clientKey = "obFmxyzaxx6JWMVMtXpaggDFu2TcARRMqyFQdYpP";
+        var appId     = "TfBH3NJxzbOaxpksu5YymD4lP9bPlytcfZMG8i5a";  
+
+        parsePlugin.initialize(appId, clientKey, function() {
+          console.log('OK: Initialized parse plugin');
+        }, function(e) {
+          console.log('ERROR: Failed to initialize parse plugin');
+        });
+
+        parsePlugin.subscribe('phonegap', function() {
+          console.log('OK: Subscribed to push notificiations');
+        }, function(e) {
+          console.log('ERROR: Failed to subscribe to push notifications');
+        });
+      } else {
+        console.log('ERROR: Could not register for push notifications');
+      }
     }
 };

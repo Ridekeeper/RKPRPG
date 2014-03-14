@@ -24,25 +24,39 @@ function menuControl($scope) {
   Ridekeeper.currentPage = null;
 }
 
+function checkLoggedIn(){
+    // redirect to login page if not authenticated
+    var currentUser = Parse.User.current();
+    if (!currentUser) {
+      // go to login page
+      window.location.hash = 'login';
+    }
+}
+
 angular.module('ridekeeper.controllers', [])
 
   .controller('MenuCtrl', function($scope) {
+     checkLoggedIn();
      menuControl($scope);
   })
   .controller('MapCtrl', function($scope) {
+     checkLoggedIn();    
      menuControl($scope);
      Ridekeeper.currentPage = "vehicle-map";
      vehicleInfoInitialize();
   })
   .controller('ProfileCtrl', function($scope) {
+     checkLoggedIn();    
      menuControl($scope);
      Ridekeeper.profile.initialize();
   })
   .controller('StolenCtrl', function($scope) {
+     checkLoggedIn();    
      menuControl($scope);
      stolenInitialize();
   })
   .controller('VehiclesCtrl', function($scope) {
+     checkLoggedIn();    
      menuControl($scope);
      vehiclesInitialize();
   })
@@ -52,6 +66,7 @@ angular.module('ridekeeper.controllers', [])
      snapper.disable();
   })
   .controller('SettingsCtrl', function($scope) {
+     checkLoggedIn();    
      menuControl($scope);
      Ridekeeper.settings.initialize();
   })
@@ -61,6 +76,7 @@ angular.module('ridekeeper.controllers', [])
      snapper.disable();
   })
   .controller('NewVehicleCtrl', function($scope) {
+     checkLoggedIn();    
      menuControl($scope);
      Ridekeeper.currentPage = "new-vehicle";
      newVehicle.initialize();

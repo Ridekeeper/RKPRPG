@@ -90,8 +90,9 @@ function user() {
     Parse.User.logIn(username, password, {
       success: function(user) {
         // Do stuff after successful login.
+
         alert("Login success!");
-        window.location.hash = 'profile';
+        window.location.hash = 'vehicles';
       },
       error: function(user, error) {
         // The login failed. Check error to see why.
@@ -235,9 +236,17 @@ function user() {
   this.getStolenVehicleList = function (fun)
   {
     //List all stolen vehicles
+    //Hard code a user location until we get it from Phonegap API
+    var userLatitude = 34.068501;
+    var userLongitude = -118.4401;
+    //One degree divided by 60 is around a mile
+    var southwestOfUser = new Parse.GeoPoint(userLatitude-(1/60), userLongitude-(1/60));
+    var northeastOfUser = new Parse.GeoPoint(userLatitude+(1/60), userLongitude+(1/60));
+
     var Vehicle = Parse.Object.extend("Vehicle");
     var query = new Parse.Query(Vehicle);
     query.equalTo("alertLevel", "STOLEN");
+    query.withinGeoBox("pos", southwestOfUser, northeastOfUser);
     query.find({
       success: function(results) 
       {
@@ -252,6 +261,22 @@ function user() {
       error: function(error) 
       {
         alert("Error: getStolenVehicleList failed");
+      }
+    });
+  };
+  
+  this.setVehicleStolen = function(objectId)
+  {
+    var Vehicle = Parse.Object.extend("Vehicle");
+    var query = new Parse.Query(Vehicle);
+    query.get(objectId, {
+      success: function(object) {
+        object.set("alertLevel", "STOLEN");
+        object.save();
+        alert(object.id + "was set to " + object.get("alertLevel"));
+      },
+      error: function() {
+        alert("Error in setVehicleStolen");
       }
     });
   };
@@ -295,6 +320,7 @@ function user() {
 
   };
 
+//Dont think these are used
   this.updateVehicleLicense = function(newLicense) {
     this.updateVehicle("license", newLicense);
   };

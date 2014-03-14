@@ -21,11 +21,6 @@ function vehicleInfoInitialize() {
     $('#model').val(vehicleObject.model);
     $('#year').val(vehicleObject.year);
     $('#license').val(vehicleObject.license);
-    if (!vehicleObject.location) {
-      $('#map-message').css('display', 'block');    
-    } else {
-      mapInitialize(vehicleObject.location);
-    }
     document.getElementById("vehicle-image").src = vehicleObject.photo;
   }, errorFun);
 

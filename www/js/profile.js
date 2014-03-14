@@ -6,10 +6,16 @@ function profile() {
 		  var name = User.get("name");
 		  var email = User.get("email");
 		  var phone = User.get("phone");
-		  $("#name").val(name);
-		  $("#email").val(email);
-		  $("#phone").val(phone);
 
+      if (name && email && phone)
+      {
+		    $("#name").val(name);
+		    $("#email").val(email);
+		    $("#phone").val(phone);
+      } else {
+        // For some reason cache is empty, login again
+        Ridekeeper.user.logout();
+      }
       // Set user photo if it exists
       var UserObject = Parse.Object.extend("User");
       var query = new Parse.Query(UserObject);

@@ -43,12 +43,6 @@ function vehicleInfoInitialize() {
 
   if (vehicleStolen) {
     $('input').attr('readonly', true);
-    $('#enter-chatroom').css('display', 'block'); // Show enter chatroom button
-  
-    $('#enter-chatroom').click(function() {
-      window.open('#/chatroom', '_self'); // Page does not yet exist
-    });
-
   } else {
     newVehicle.initialize();
 

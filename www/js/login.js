@@ -20,8 +20,9 @@ function login() {
   this.login = function() {
     var username = $('#login-user').val();
     var password = $('#login-pass').val();
-
+    showLoader();
     Ridekeeper.user.login(username, password);
+    hideLoader();
   }
 
   this.goToRegistration = function() {

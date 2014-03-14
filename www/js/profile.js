@@ -2,6 +2,8 @@ function profile() {
 
 	this.initialize = function() {
 		var User = Ridekeeper.user.currentUser();
+
+    showLoader();
 		if (User) {
 		  var name = User.get("name");
 		  var email = User.get("email");
@@ -14,8 +16,10 @@ function profile() {
 		    $("#phone").val(phone);
       } else {
         // For some reason cache is empty, login again
+        hideLoader();
         Ridekeeper.user.logout();
       }
+
       // Set user photo if it exists
       var UserObject = Parse.Object.extend("User");
       var query = new Parse.Query(UserObject);
@@ -38,6 +42,7 @@ function profile() {
         }
       });
 		}
+    hideLoader();
 		  // Register buttons
 		$('#change-profile-image-button').click(function(){Ridekeeper.profile.newPicture()});
 		$('#logout-button').click(function(){Ridekeeper.user.logout()});

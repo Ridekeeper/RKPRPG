@@ -30,7 +30,7 @@ body {
 }
 
 .overlay {
-  position:fixed;
+  position:absolute;
   display:none;
   width:40%;
   height:200px;;

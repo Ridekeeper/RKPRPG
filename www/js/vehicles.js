@@ -5,6 +5,8 @@ function vehiclesInitialize() {
     window.location.hash = "new-vehicle";
   });
 
+  showLoader();
+
   User.getUserVehicleList(function(vehicleArray) {
 
     var vehicles = "";
@@ -20,5 +22,7 @@ function vehiclesInitialize() {
     }
 
     $('#vehicle-list').html(vehicles);
+
+    hideLoader();
   });
 }

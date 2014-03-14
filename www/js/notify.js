@@ -11,11 +11,10 @@ function showMessage(msg)
 
 function hideLoader()
 {
-  $(".overlay .overlay-loader").hide(); 
-  hideOverlay();  
+  $(".overlay").css("display", "none"); 
 }
 
 function showLoader()
 {
-  $(".overlay .overlay-loader").show();
+  $(".overlay").css("display", "inline");
 }

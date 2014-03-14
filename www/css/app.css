@@ -242,6 +242,6 @@ body {
 }
 
 /* Only some of these buttons should be displayed on a given page */
-#create, #remove, #track, #enter-chatroom {
+#change-vehicle-image-button, #create, #remove, #enter-chatroom {
   display: none;
 }

@@ -2,7 +2,7 @@ function vehiclesInitialize() {
   var User = Ridekeeper.user;
 
   $('#plus-button').click(function(){
-    window.location.hash = "new-vehicle";
+    window.open("#/new-vehicle", "_self");
   });
 
   showLoader();
@@ -14,7 +14,7 @@ function vehiclesInitialize() {
     for (var i = 0; i < vehicleArray.length; i++) {
 
       var vehicle = vehicleArray[i];
-      var vehicleText = vehicle.year + ' ' + vehicle.make + ' ' + vehicle.model;
+      var vehicleText = getVehicleTitle(vehicle);
       var vehicleHTML = '<div class="list-item" onclick="setVehiclePage(\''+ vehicle.objectId + '\', false)">'
                         + vehicleText + '</div>';
 
@@ -25,4 +25,8 @@ function vehiclesInitialize() {
 
     hideLoader();
   });
+}
+
+function getVehicleTitle(vehicle) {
+  return vehicle.year + ' ' + vehicle.make + ' ' + vehicle.model;
 }

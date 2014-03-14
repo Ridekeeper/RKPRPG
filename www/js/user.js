@@ -18,6 +18,10 @@ function convert(parseObject) {
   if (geoPoint){
     vehicleObject["location"] = new google.maps.LatLng(geoPoint.latitude, geoPoint.longitude);
   }
+  var picture = parseObject.get("photo");
+  if (picture) {
+    vehicleObject["photo"] = picture.url();
+  }
   return vehicleObject;
 }
 

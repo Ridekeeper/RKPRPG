@@ -8,29 +8,43 @@ var vehicleStolen; //Indicates whether currentVehicle is stolen
 function vehicleInfoInitialize() {
   var errorFun = function(vehicleObject, error) {
     alert('Error retreiving vehicle.\nError Code: ' + error.code);
-    window.open("#/vehicles", "_self");
+    if (vehicleStolen) {
+      window.open("#/vehicles-stolen", "_self");
+    } else {
+      window.open("#/vehicles", "_self");
+    }
   }
   Ridekeeper.user.getVehicle(pageVehicleId, function(vehicleObject) {
     currentVehicle = vehicleObject;
+    $('#top-bar h1').text('Vehicle: ' + getVehicleTitle(vehicleObject));
     $('#make').val(vehicleObject.make);
     $('#model').val(vehicleObject.model);
     $('#year').val(vehicleObject.year);
     $('#license').val(vehicleObject.license);
-    if (!vehicleObject.location) {
-      $('#map-message').css('display', 'block');    
-    } else {
-      mapInitialize(vehicleObject.location);
-    }
+    document.getElementById("vehicle-image").src = vehicleObject.photo;
   }, errorFun);
+
+  $('#change-vehicle-image-button').click(function(){
+    Ridekeeper.vehicles.newPicture();
+  });
+
+
+  $('#back').click(function() {
+    if (vehicleStolen) {
+      window.open("#/vehicles-stolen", "_self");
+    } else {
+      window.open("#/vehicles", "_self");
+    }
+  });
+
+  $('#track').click(function() {
+    window.open('#/track', '_self');
+  });
 
   if (vehicleStolen) {
     $('input').attr('readonly', true);
-    $('#track').css('display', 'block'); // Show track vehicle button
     $('#enter-chatroom').css('display', 'block'); // Show enter chatroom button
   
-    $('#track').click(function() {
-      window.open('#/track', '_self'); // Page does not yet exist
-    });
     $('#enter-chatroom').click(function() {
       window.open('#/chatroom', '_self'); // Page does not yet exist
     });
@@ -38,7 +52,10 @@ function vehicleInfoInitialize() {
   } else {
     newVehicle.initialize();
 
-    $('#remove').css('display', 'block'); // Show remove vehicle button
+    // Show buttons
+    $('#change-vehicle-image-button').css('display', 'block');
+    $('#remove').css('display', 'block');
+
     $('#remove').click(function() {
       var deleteVehicle = confirm('Do you wish to delete the vehicle?');
       if (deleteVehicle) {
@@ -59,22 +76,6 @@ function vehicleInfoInitialize() {
 
   }
 
-}
-
-/* Initializes the Google Map. Called once every time a vehicle page is loaded */
-function mapInitialize(location) {
-  var mapOptions = {
-    center: location,
-    zoom: 20,
-    disableDefaultUI: true,
-    draggable: false,
-    mapTypeControl: true,
-
-  };
-  googleMap = new google.maps.Map(document.getElementById("map-canvas"),
-    mapOptions);
-  intervalId = setInterval(updateMap, 3000);
-  updateMap();
 }
 
 //Test function that is no longer used
@@ -98,43 +99,97 @@ function getVehiclePosition() {
   return pos
 }
 
-
-//Called every few seconds to update the vehicle position on the map
-var curMarker = null;
-function updateMap() {
-  
-  Ridekeeper.user.getVehicle(pageVehicleId, function(object) {
-    $('#map-message').css('display', 'none');
-
-    if (!object.location) {
-      $('#map-message').css('display', 'block');
-      return  
-    }
-
-    var pos = object.location;
-
-    // Only change map position if it changed
-    if (oldPos == null || !oldPos.equals(pos)) {
-      if (curMarker != null) {
-        curMarker.setMap(null);
-      }
-      curMarker = new google.maps.Marker({
-        position: pos,
-        map: googleMap,
-      });
-      googleMap.setCenter(pos);
-      oldPos = pos;
-    }
-    
-  }, function(object, error) {
-    $('#map-message').css('display', 'block');    
-  })
-  
-}
-
 // Sets up page when partial is loaded
 function setVehiclePage(vehicleIdentifier, stolen) {
   pageVehicleId = vehicleIdentifier;
   vehicleStolen = stolen;
-  window.location = "#/vehicle-map";
+  window.open("#/vehicle-map", "_self");
+}
+
+function vehicles() {
+
+  function convertImgToBase64(url, callback, outputFormat){
+    var canvas = document.createElement('CANVAS'),
+        ctx = canvas.getContext('2d'),
+        img = new Image;
+    img.crossOrigin = 'Anonymous';
+    img.onload = function(){
+        canvas.height = img.height;
+        canvas.width = img.width;
+        ctx.drawImage(img,0,0);
+        var dataURL = canvas.toDataURL(outputFormat || 'image/jpg');
+        callback.call(this, dataURL);
+        canvas = null; 
+    };
+    img.src = url;
+  }
+
+  function onPicSuccess(imageURI){
+    convertImgToBase64(imageURI, function(base64){
+      var file = new Parse.File("photo.jpg", { base64: base64 });
+
+      if (file == null)
+      {
+        showMessage('Invalid picture, please try again');
+      }
+
+      file.save().then(function() {
+        var field = [{field: "photo", value: file}];
+        var successFun = function(vehicle) {
+          showMessage("Picture changed");
+          $('#vehicle-image').attr('src',imageURI); 
+        }
+        var errorFun = function(vehicle, error) {
+          showMessage("Picture could not be uploaded:\n"+error.message);
+          console.log(error.message); 
+        }
+        Ridekeeper.user.updateVehicle(pageVehicleId, field, successFun, errorFun);
+
+
+      }, function(error)  {
+        onPicFail(error);
+        return;
+      });
+    });
+  }
+
+  function onPicFail(message){
+    showMessage('Failed to set picture: ' + message);
+  }
+  
+  function newGalleryPicture() {
+  navigator.camera.getPicture(onPicSuccess, onPicFail, { quality: 50,
+    destinationType: Camera.DestinationType.FILE_URI,
+    allowEdit: true,
+    targetWidth: 200,
+    targetHeight: 200,
+    sourceType: Camera.PictureSourceType.PHOTOLIBRARY,
+    saveToPhotoAlbum: false
+    });
+  }
+
+  function newCameraPicture() {
+  navigator.camera.getPicture(onPicSuccess, onPicFail, { quality: 50,
+    destinationType: Camera.DestinationType.FILE_URI,
+    allowEdit: true,
+    targetWidth: 200,
+    targetHeight: 200,
+    sourceType: Camera.PictureSourceType.CAMERA,
+    saveToPhotoAlbum: false
+    });
+  }
+
+  function sourceSelected( buttonIndex ) {
+    if (buttonIndex == 1)
+      newCameraPicture();
+
+    if (buttonIndex == 2)
+      newGalleryPicture();
+    // Do nothing, the user exited the dialog
+  }
+
+  this.newPicture = function() {
+      // Prompt for gallery or camera as source
+        navigator.notification.confirm('Select a source for the new image', sourceSelected , 'Image Source', ["Camera","Gallery"]);
+  }
 }

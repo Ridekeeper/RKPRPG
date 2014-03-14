@@ -11,7 +11,26 @@ function profile() {
 		  $("#phone").val(phone);
 
       // Set user photo if it exists
-      
+      var UserObject = Parse.Object.extend("User");
+      var query = new Parse.Query(UserObject);
+      query.get(User.id, {
+        success: function(user) {
+          // The object was retrieved successfully.
+
+          var picture = user.get("avatar");
+          console.log(picture);
+          if (picture){
+            document.getElementById("profile-image").src = picture.url();
+            console.log("Profile image set from parse");
+          } else {  
+            console.log("User profile picture doesn't exist, continue with default");
+          }
+
+        },
+        error: function(object, error) {
+          console.log("Failed to query for user photo, using default.  ERROR: " + error.message);
+        }
+      });
 		}
 		  // Register buttons
 		$('#change-profile-image-button').click(function(){Ridekeeper.profile.newPicture()});

@@ -9,6 +9,9 @@ function profile() {
 		  $("#name").val(name);
 		  $("#email").val(email);
 		  $("#phone").val(phone);
+
+      // Set user photo if it exists
+      
 		}
 		  // Register buttons
 		$('#change-profile-image-button').click(function(){Ridekeeper.profile.newPicture()});
@@ -20,8 +23,8 @@ function profile() {
         var User = Ridekeeper.user.currentUser();
         
         User.set("name", $("#name").val());
-		User.set("email", $("#email").val());
-		User.set("phone", $("#phone").val());        
+		    User.set("email", $("#email").val());
+		    User.set("phone", $("#phone").val());        
         User.save(null, {
         	success: function(User) {
         		alert("Save Successful");
@@ -33,8 +36,49 @@ function profile() {
         });
     }
 
+  function convertImgToBase64(url, callback, outputFormat){
+    var canvas = document.createElement('CANVAS'),
+        ctx = canvas.getContext('2d'),
+        img = new Image;
+    img.crossOrigin = 'Anonymous';
+    img.onload = function(){
+        canvas.height = img.height;
+        canvas.width = img.width;
+        ctx.drawImage(img,0,0);
+        var dataURL = canvas.toDataURL(outputFormat || 'image/jpg');
+        callback.call(this, dataURL);
+        canvas = null; 
+    };
+    img.src = url;
+  }
+
   function onPicSuccess(imageURI){
-		$('#profile-image').attr('src',imageURI); 
+    convertImgToBase64(imageURI, function(base64){
+      var file = new Parse.File("avatar.jpg", { base64: base64 });
+
+      if (file == null)
+      {
+        showMessage('Invalid picture, please try again');
+      }
+
+      file.save().then(function() {
+        var User = Ridekeeper.user.currentUser();
+        User.set("avatar",  file);
+        User.save(null, {
+          success: function(User) {
+            showMessage("Picture changed");
+            $('#profile-image').attr('src',imageURI); 
+          },
+          error: function(user, error) {
+            showMessage("Picture could not be uploaded:\n"+error.message);
+            console.log(error.message);
+          }
+        });
+      }, function(error)  {
+        onPicFail(error);
+        return;
+      });
+    });
 	}
 
 	function onPicFail(message){

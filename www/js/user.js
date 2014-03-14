@@ -175,7 +175,7 @@ function user() {
     Ridekeeper.user.currentUser().set("phone", phone);
   };
 
-  this.addVehicle = function (license, make, model, year, successFun, errorFun)
+  this.addVehicle = function (license, make, model, year, others, successFun, errorFun)
   {
     var userId = Ridekeeper.user.currentUser().id;
     var Vehicle = Parse.Object.extend("Vehicle");
@@ -185,6 +185,9 @@ function user() {
     newVehicle.set("model", model);
     newVehicle.set("ownerId", userId);
     newVehicle.set("year", year);
+    for (var i = 0; i < others.length; i++) {
+      newVehicle.set(others[i].field, others[i].value);
+    }
 
     newVehicle.save(null, 
     {

@@ -46,7 +46,7 @@ function vehicleInfoInitialize() {
   if (vehicleStolen) {
     $('input').attr('readonly', true);
   } else {
-    newVehicle.initialize();
+    newVehicle.editVehicle();
 
     // Show buttons
     $('#change-vehicle-image-button').css('display', 'block');
@@ -139,8 +139,13 @@ function vehicles() {
           showMessage("Picture could not be uploaded:\n"+error.message);
           console.log(error.message); 
         }
-        Ridekeeper.user.updateVehicle(pageVehicleId, field, successFun, errorFun);
-
+        if (Ridekeeper.currentPage == "new-vehicle") {
+          // We cannot upload the file yet since the vehicle doesn't exist
+          newVehicle.curImage = file;
+          $('#vehicle-image').attr('src',imageURI); 
+        } else {
+          Ridekeeper.user.updateVehicle(pageVehicleId, field, successFun, errorFun);
+        }
 
       }, function(error)  {
         onPicFail(error);

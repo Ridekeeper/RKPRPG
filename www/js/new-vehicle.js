@@ -1,5 +1,17 @@
 var newVehicle = {
+
+  curImage : null,
+
   initialize : function() {
+    newVehicle.editVehicle();
+    $('#change-vehicle-image-button').css('display', 'block');
+
+    $('#change-vehicle-image-button').click(function(){
+      Ridekeeper.vehicles.newPicture();
+    });
+  },
+
+  editVehicle : function() {
     $('#create').css('display', 'block'); // Show button
 
     $("#create").click(function() {
@@ -39,14 +51,21 @@ var newVehicle = {
           document.getElementById("create-text").scrollIntoView();
         }
         if (Ridekeeper.currentPage == "new-vehicle") {
-          User.addVehicle(license, make, model, year, successFun, errorFun);
+          var otherFields = [];
+          if (newVehicle.curImage) {
+            console.log("Adding photo field"); 
+            otherFields.push({field: "photo", value: newVehicle.curImage});
+          }
+          User.addVehicle(license, make, model, year, otherFields, successFun, errorFun);
           $('#create-text').html('Adding vehicle...');
           $('#create-text').css('color', '');
+          document.getElementById("create-text").scrollIntoView();
         } else {
           var fields = [{field: "make",    value: make},
                         {field: "model",   value: model},
                         {field: "year",    value: year},
                         {field: "license", value: license}];
+
           User.updateVehicle(pageVehicleId, fields, successFun, errorFun);
           $('#create-text').html('Updating vehicle...');
           $('#create-text').css('color', '');

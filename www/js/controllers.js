@@ -21,6 +21,7 @@ function menuControl($scope) {
   }
   oldPos = null;
   oldCurrentLoc = null;
+  newVehicle.curImage = null;
   Ridekeeper.currentPage = null;
 }
 

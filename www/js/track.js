@@ -135,5 +135,13 @@ function showVehicleLocation(object) {
 
 // Stub function which current retrieves hardcoded position after 1 second
 function getCurLocation(successFun, errorFun) {
-  setTimeout(function(){successFun(34.038509, -118.445667);}, 1000);
+  if (navigator.geolocation) {
+    function returnPosition(position) {
+      alert('test');
+      successFun(position.coords.latitude, position.coords.longitude);
+    };
+    navigator.geolocation.getCurrentPosition(returnPosition, errorFun, 
+      {enableHighAccuracy:true, timeout: 5000});
+  }
+  //setTimeout(function(){successFun(34.038509, -118.445667);}, 1000);
 }

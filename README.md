@@ -12,3 +12,9 @@ RKPRPG
    so make sure to to run git checkout on that folder to make sure that your development code
    matches that in the repository before beginning development.
 
+The app also needs several native plugins installed.  These commands should install them:
+   phonegap plugin add org.apache.cordova.camera
+   phonegap plugin add org.apache.cordova.dialogs
+   phonegap plugin add org.apache.cordova.vibration
+   phonegap plugin add https://github.com/Ridekeeper/phonegap-parse-plugin.git
+

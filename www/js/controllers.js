@@ -21,6 +21,13 @@ function menuControl($scope) {
   }
   oldPos = null;
 
+  // redirect to login page if not authenticated
+  var currentUser = Parse.User.current();
+  if (!currentUser) {
+      // go to login page
+      window.location.hash = 'login';
+  }
+
 }
 
 angular.module('ridekeeper.controllers', [])

@@ -52,7 +52,10 @@ function vehicleInfoInitialize() {
   } else {
     newVehicle.initialize();
 
-    $('#remove').css('display', 'block'); // Show remove vehicle button
+    // Show buttons
+    $('#change-vehicle-image-button').css('display', 'block');
+    $('#remove').css('display', 'block');
+
     $('#remove').click(function() {
       var deleteVehicle = confirm('Do you wish to delete the vehicle?');
       if (deleteVehicle) {

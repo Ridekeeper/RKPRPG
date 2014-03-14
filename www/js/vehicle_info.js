@@ -21,7 +21,9 @@ function vehicleInfoInitialize() {
     $('#model').val(vehicleObject.model);
     $('#year').val(vehicleObject.year);
     $('#license').val(vehicleObject.license);
-    document.getElementById("vehicle-image").src = vehicleObject.photo;
+    if (vehicleObject.photo) {
+      document.getElementById("vehicle-image").src = vehicleObject.photo;
+    }
   }, errorFun);
 
   $('#change-vehicle-image-button').click(function(){

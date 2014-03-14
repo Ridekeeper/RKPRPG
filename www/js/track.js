@@ -58,7 +58,7 @@ function updateMap() {
         function(latitude, longitude) {
           getRoute(object, latitude, longitude);
         }, 
-        function() {
+        function( error ) {
           $('#map-message').css('display', 'block');
           $('#map-message').text('Error retrieving user location');
         }
@@ -137,7 +137,6 @@ function showVehicleLocation(object) {
 function getCurLocation(successFun, errorFun) {
   if (navigator.geolocation) {
     function returnPosition(position) {
-      alert('test');
       successFun(position.coords.latitude, position.coords.longitude);
     };
     navigator.geolocation.getCurrentPosition(returnPosition, errorFun, 

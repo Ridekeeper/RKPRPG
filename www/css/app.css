@@ -241,6 +241,11 @@ body {
   background-color: #F00;
 }
 
+#profile-image, #vehicle-image {
+  max-width: 200px;
+  max-height: 200px;
+}
+
 /* Only some of these buttons should be displayed on a given page */
 #change-vehicle-image-button, #create, #remove, #enter-chatroom {
   display: none;

@@ -7,7 +7,7 @@ var newVehicle = {
     $('#change-vehicle-image-button').css('display', 'block');
 
     $('#change-vehicle-image-button').click(function(){
-      Ridekeeper.vehicles.newPicture();
+      Ridekeeper.image_upload.newPicture(Ridekeeper.vehicles.onPicSuccess);
     });
   },
 

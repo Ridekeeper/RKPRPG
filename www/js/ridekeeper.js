@@ -21,6 +21,8 @@ function ridekeeper() {
   // as soon as the Ridekeeper object is
   this.settings.initialize();
 
+  this.image_upload = new image_upload();
+
   this.highlightedPage = "vehicles-stolen";
 
   this.currentPage = "vehicle-stolen";
